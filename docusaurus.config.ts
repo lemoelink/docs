@@ -85,7 +85,7 @@ const config: Config = {
         {
           title: 'Documentación',
           items: [
-            { label: 'Guía de Inicio Rápido', to: '/intro' },
+            { label: 'Guía de Inicio Rápido', to: '/' },
             { label: 'Configuración', to: '/configuracion/config-json' },
             { label: 'Referencia API', to: '/api/endpoints' },
           ],
