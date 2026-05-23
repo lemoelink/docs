@@ -511,6 +511,11 @@ footer.footer {
   margin-bottom: 0.75rem;
 }
 
+.card-doc .card-icon {
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
 .card-doc h3 {
   font-size: 1rem;
   font-weight: 700;
