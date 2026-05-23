@@ -51,11 +51,6 @@ const config: Config = {
     },
     navbar: {
       title: 'LEMoE',
-      logo: {
-        alt: 'LEMoE Logo',
-        src: 'img/logo.jpg',
-        srcDark: 'img/logo.jpg',
-      },
       items: [
         {
           type: 'docSidebar',
