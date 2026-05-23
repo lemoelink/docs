@@ -61,16 +61,3 @@ lemoe/
 └── start.sh               # Script de arranque
 ```
 
-## Instalar con Docker
-
-```bash
-docker build -t lemoe .
-docker run -p 11435:11435 \
-  -v ./config:/app/config \
-  -v ./models:/app/models \
-  lemoe
-```
-
-:::info Documentación Docker
-Consulta la carpeta `private/docker/` en el repositorio para configuraciones de `docker-compose` más completas.
-:::

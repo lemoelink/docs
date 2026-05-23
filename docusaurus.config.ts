@@ -53,8 +53,8 @@ const config: Config = {
       title: 'LEMoE',
       logo: {
         alt: 'LEMoE Logo',
-        src: 'img/logo.svg',
-        srcDark: 'img/logo.svg',
+        src: 'img/logo.jpg',
+        srcDark: 'img/logo.jpg',
       },
       items: [
         {

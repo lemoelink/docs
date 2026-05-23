@@ -30,9 +30,9 @@ El backend más común para configuraciones self-hosted. Conecta a una instancia
 
 ### Notas de seguridad (SSRF)
 
-- ✅ `http://127.0.0.1:11434` — localhost permitido
-- ✅ `http://192.168.1.100:11434` — LAN privada permitida
-- ❌ `http://169.254.169.254` — metadata AWS/GCP **bloqueado**
+- Permitido: `http://127.0.0.1:11434` — localhost
+- Permitido: `http://192.168.1.100:11434` — LAN privada
+- Bloqueado: `http://169.254.169.254` — metadata AWS/GCP
 
 ---
 

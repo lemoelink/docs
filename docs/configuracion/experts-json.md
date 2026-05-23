@@ -36,11 +36,11 @@ El archivo `config/experts.json` define la lista de modelos especialistas dispon
 
 | Campo | Requerido | Descripción |
 |---|---|---|
-| `id` | ✅ | Identificador numérico único. |
-| `label` | ✅ | Nombre del experto. Solo alfanumérico, guiones y guiones bajos. Se usa como nombre de modelo en la API. |
-| `description` | ✅ | Frase en lenguaje natural que describe qué maneja el experto. Se vectoriza y aporta el 30% al score. |
-| `keywords` | ✅ | Lista de términos que el usuario podría escribir. **Mínimo 15.** |
-| `type` | ✅ | Backend: `"ollama"`, `"api"` o `"local"`. Ver [Modelos](/configuracion/modelos). |
+| `id` | Sí | Identificador numérico único. |
+| `label` | Sí | Nombre del experto. Solo alfanumérico, guiones y guiones bajos. Se usa como nombre de modelo en la API. |
+| `description` | Sí | Frase en lenguaje natural que describe qué maneja el experto. Se vectoriza y aporta el 30% al score. |
+| `keywords` | Sí | Lista de términos que el usuario podría escribir. **Mínimo 15.** |
+| `type` | Sí | Backend: `"ollama"`, `"api"` o `"local"`. Ver [Modelos](/configuracion/modelos). |
 
 ## Reglas críticas para keywords
 
@@ -49,8 +49,8 @@ El sistema de puntuación multi-vector necesita suficiente cobertura. Con menos 
 :::
 
 1. **Términos concretos, no categorías abstractas**
-   - ✅ `"sql"`, `"query"`, `"select"`, `"join"`, `"trigger"`
-   - ❌ `"base de datos"`, `"datos"`, `"informacion"`
+   - Correcto: `"sql"`, `"query"`, `"select"`, `"join"`, `"trigger"`
+   - Incorrecto: `"base de datos"`, `"datos"`, `"informacion"`
 
 2. **Palabras que el usuario realmente escribe en el prompt**
    - Incluye sinónimos, conjugaciones, errores comunes
