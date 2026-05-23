@@ -1,0 +1,55 @@
+---
+id: open-webui
+title: Integración con Open WebUI
+sidebar_position: 1
+description: Cómo conectar Open WebUI a LEMoE para usar todos tus expertos desde una interfaz gráfica.
+---
+
+# Integración con Open WebUI
+
+LEMoE es completamente compatible con [Open WebUI](https://openwebui.com/), la interfaz web más popular para modelos de IA auto-hospedados.
+
+## Configuración
+
+1. Abre Open WebUI y ve a **Settings → Connections**
+
+2. En la sección **OpenAI API**:
+   - **URL Base**: `http://tu-ip-de-lemoe:11435/v1`
+   - **API Key**: cualquier valor (LEMoE la ignora)
+
+3. Haz clic en **Save** y recarga la página
+
+4. En el selector de modelos verás todos tus expertos listados
+
+## Comportamiento del enrutamiento
+
+| Configuración en Open WebUI | Comportamiento en LEMoE |
+|---|---|
+| Modelo: `LEMoE Default` (o cualquier nombre genérico) | El router ML elige automáticamente el mejor experto |
+| Modelo: `programador` (etiqueta exacta) | Va directo al experto `programador`, sin router |
+| Modelo: `escritor_creativo` | Va directo al experto `escritor_creativo` |
+
+:::tip Usa enrutamiento automático
+Para sacar el máximo partido de LEMoE, selecciona un modelo genérico y deja que el router elija. Verás en los logs cómo decide en tiempo real.
+:::
+
+## Ejemplo de log con Open WebUI
+
+```
+[API] POST /v1/chat/completions from 192.168.1.50
+[API] model=gpt-4, messages=1, stream=true
+[Router] Prompt: "¿Puedes escribirme un poema sobre el mar?"
+[Router] label='escritor_creativo' score=0.89 (embedding match)
+[ExpertDispatcher] → api (anthropic/claude-3-5-sonnet)
+[Stream] Sending tokens to client...
+```
+
+## Solución de problemas
+
+**No aparecen modelos en Open WebUI:**
+- Verifica que LEMoE está corriendo: `curl http://tu-ip:11435/api/version`
+- Comprueba que la URL Base tiene `/v1` al final
+
+**Error de conexión:**
+- Asegúrate de que el firewall permite el puerto 11435
+- En Docker, usa la IP del host, no `localhost`
