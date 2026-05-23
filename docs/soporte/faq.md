@@ -51,9 +51,6 @@ Sí. Usa el cliente OpenAI de Langchain/LlamaIndex apuntando a `http://tu-ip:114
 ### ¿Cuánto tarda el router en decidir?
 Con `multilingual-e5-small`: ~10-20ms. Con solo keywords: < 1ms. El tiempo de inferencia del modelo experto domina el tiempo total.
 
-### ¿Puede correr en Docker?
-Sí. Ver la carpeta `private/docker/` para configuraciones de `docker-compose`.
-
 ### ¿Qué pasa si un backend externo (OpenAI) falla?
 El Expert Dispatcher devuelve un error HTTP 502/503 al cliente. No hay reintentos automáticos actualmente. Puedes implementar retry logic en un plugin `after_generation`.
 

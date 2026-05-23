@@ -5,11 +5,11 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       id: 'intro',
-      label: '🚀 Inicio Rápido',
+      label: 'Inicio Rápido',
     },
     {
       type: 'category',
-      label: '📦 Instalación',
+      label: 'Instalación',
       collapsed: false,
       items: [
         'instalacion/requisitos',
@@ -19,7 +19,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '⚙️ Configuración',
+      label: 'Configuración',
       items: [
         'configuracion/config-json',
         'configuracion/experts-json',
@@ -28,7 +28,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🔌 API',
+      label: 'API',
       items: [
         'api/endpoints',
         'api/seguridad',
@@ -36,7 +36,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🧠 Expertos',
+      label: 'Expertos',
       items: [
         'expertos/arquitectura',
         'expertos/router',
@@ -45,7 +45,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🔧 Avanzado',
+      label: 'Avanzado',
       items: [
         'avanzado/open-webui',
         'avanzado/plugins',
@@ -55,7 +55,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🆘 Soporte',
+      label: 'Soporte',
       items: [
         'soporte/troubleshooting',
         'soporte/faq',

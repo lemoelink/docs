@@ -32,11 +32,11 @@ El Expert Dispatcher valida las URLs de los backends Ollama antes de hacer petic
 
 | URL | Estado |
 |---|---|
-| `http://127.0.0.1:11434` | ✅ Permitida |
-| `http://192.168.x.x` | ✅ Permitida (LAN privada) |
-| `http://10.x.x.x` | ✅ Permitida (red interna) |
-| `http://169.254.169.254` | ❌ **Bloqueada** (metadata AWS/GCP) |
-| `http://metadata.google.internal` | ❌ **Bloqueada** |
+| `http://127.0.0.1:11434` | Permitida |
+| `http://192.168.x.x` | Permitida (LAN privada) |
+| `http://10.x.x.x` | Permitida (red interna) |
+| `http://169.254.169.254` | **Bloqueada** (metadata AWS/GCP) |
+| `http://metadata.google.internal` | **Bloqueada** |
 
 ## Validación de Labels
 
@@ -46,8 +46,8 @@ Los labels de los expertos en `experts.json` son validados antes de usarse en ru
 - Previene ataques de **path traversal** (`../`, `/etc/passwd`, etc.)
 
 ```
-✅ "programador", "coder-v2", "analista_datos"
-❌ "../../../etc/passwd", "model/evil", "label with spaces"
+Permitidos: "programador", "coder-v2", "analista_datos"
+Bloqueados: "../../../etc/passwd", "model/evil", "label with spaces"
 ```
 
 ## Sanitización de Logs
