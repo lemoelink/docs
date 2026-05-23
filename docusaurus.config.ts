@@ -59,6 +59,11 @@ const config: Config = {
           label: 'Documentación',
         },
         {
+          href: 'http://config.lemoe.link/',
+          label: 'Configurador',
+          position: 'right',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },
@@ -82,6 +87,7 @@ const config: Config = {
           items: [
             { label: 'Guía de Inicio Rápido', to: '/' },
             { label: 'Configuración', to: '/configuracion/config-json' },
+            { label: 'Configurador Online', href: 'http://config.lemoe.link/' },
             { label: 'Referencia API', to: '/api/endpoints' },
           ],
         },
