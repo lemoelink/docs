@@ -13,7 +13,7 @@ const config: Config = {
   organizationName: 'lemoelink',
   projectName: 'docs',
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
