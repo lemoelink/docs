@@ -28,6 +28,9 @@ El límite está en `max_experts` en `experts.json` (por defecto 15). Técnicame
 ### ¿Puedo cambiar los expertos sin reiniciar?
 Actualmente no. Los expertos se cargan al arranque. Debes reiniciar LEMoE para que los cambios en `experts.json` surtan efecto.
 
+### ¿Puedo cambiar el modelo del router?
+Sí. Puedes cambiar el modelo de embeddings modificando el parámetro `model_path` en `config/config.json`. Por defecto usa `intfloat/multilingual-e5-small`. Puedes apuntar a cualquier otro modelo compatible con SentenceTransformers de Hugging Face, a una ruta local en disco, o dejarlo vacío `""` para desactivar el enrutamiento ML y usar únicamente keywords (lo cual reduce a cero el consumo de RAM/CPU del router).
+
 ### ¿Cómo sé si el router está funcionando bien?
 Revisa los logs: `tail -f logs/app.log | grep Router`. Deberías ver scores > 0.6 para prompts claros.
 
