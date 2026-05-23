@@ -1,47 +1,114 @@
 ---
+id: intro
+title: Inicio Rápido
 sidebar_position: 1
+slug: /intro
+description: Guía de inicio rápido de LEMoE — instala y pon en marcha tu router de IA en minutos.
 ---
 
-# Tutorial Intro
+# 🚀 Guía de Inicio Rápido
 
-Let's discover **Docusaurus in less than 5 minutes**.
+**LEMoE (Light Easy Mix Of Experts)** es un middleware de enrutamiento inteligente para IA. Recibe tus prompts, los analiza y los envía al modelo especializado más adecuado — de forma totalmente transparente para tus aplicaciones.
 
-## Getting Started
+:::info ¿Qué hace LEMoE?
+LEMoE actúa como un proxy compatible con la API de OpenAI y Ollama. No necesitas cambiar tu código: simplemente cambia la URL base y LEMoE se encarga del resto.
+:::
 
-Get started by **creating a new site**.
+---
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Instalación en 3 pasos
 
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
+### 1. Clonar y preparar
 
 ```bash
-npm init docusaurus@latest my-website classic
+git clone https://github.com/lemoelink/lemoe.git
+cd lemoe
+chmod +x setup.sh
+./setup.sh
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+El script `setup.sh` crea el entorno virtual, instala dependencias y genera los archivos de configuración por defecto.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+### 2. Configurar tu primer experto
 
-## Start your site
+Edita `config/experts.json` y añade tu primer experto:
 
-Run the development server:
+```json
+{
+  "max_experts": 15,
+  "experts": [
+    {
+      "id": 1,
+      "label": "programador",
+      "description": "Experto en escribir, revisar y depurar código fuente.",
+      "keywords": [
+        "codigo", "programar", "python", "javascript", "funcion",
+        "script", "error", "bug", "html", "css", "clase", "objeto",
+        "modulo", "api", "refactorizar"
+      ],
+      "type": "ollama",
+      "url": "http://127.0.0.1:11434",
+      "model_name": "qwen2.5-coder:7b"
+    }
+  ]
+}
+```
+
+### 3. Arrancar
 
 ```bash
-cd my-website
-npm run start
+./start.sh
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+El servidor arranca en `http://0.0.0.0:11435`. ¡Listo!
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+---
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## Conectar tu primer cliente
+
+### Open WebUI
+
+1. Ve a **Settings → Connections → OpenAI API**
+2. URL Base: `http://tu-ip:11435/v1`
+3. API Key: cualquier valor (LEMoE la ignora)
+4. Guarda y recarga — verás todos tus expertos como modelos disponibles.
+
+### cURL / cualquier cliente OpenAI
+
+```bash
+curl http://localhost:11435/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [{"role": "user", "content": "Escribe una función en Python para ordenar una lista"}],
+    "stream": false
+  }'
+```
+
+LEMoE detecta automáticamente que es una pregunta de código y la enruta al experto `programador`.
+
+---
+
+## Próximos pasos
+
+<div className="cards-grid">
+  <a href="/instalacion/requisitos" className="card-doc">
+    <div className="icon">📋</div>
+    <h3>Requisitos</h3>
+    <p>Hardware, SO y dependencias necesarias.</p>
+  </a>
+  <a href="/configuracion/config-json" className="card-doc">
+    <div className="icon">⚙️</div>
+    <h3>Configuración</h3>
+    <p>Ajusta el router y parámetros avanzados.</p>
+  </a>
+  <a href="/expertos/arquitectura" className="card-doc">
+    <div className="icon">🧠</div>
+    <h3>Arquitectura</h3>
+    <p>Cómo funciona el enrutamiento internamente.</p>
+  </a>
+  <a href="/avanzado/plugins" className="card-doc">
+    <div className="icon">🔌</div>
+    <h3>Plugins</h3>
+    <p>Extiende LEMoE con hooks personalizados.</p>
+  </a>
+</div>
