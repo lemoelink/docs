@@ -1,0 +1,160 @@
+---
+id: intro
+title: Quick Start
+sidebar_position: 1
+slug: /
+description: LEMoE quick start guide — install and set up your AI router in minutes.
+---
+
+# Quick Start Guide
+
+:::warning Development Phase
+This project is currently in active development phase. However, its core functionality (routing, model loading and backends) is fully operational and stable for use.
+:::
+
+**LEMoE (Light Easy Mix Of Experts)** is an intelligent routing middleware for AI. It receives your prompts, analyzes them and routes them to the most suitable specialized model — completely transparent to your applications.
+
+:::info What does LEMoE do?
+LEMoE acts as a proxy compatible with the OpenAI and Ollama API. You don't need to change your code: simply change the base URL and LEMoE handles the rest.
+:::
+
+:::tip Online Configurator
+Do you prefer to create your configuration visually? Use the [LEMoE Online Configurator](http://config.lemoe.link/) to easily generate your `experts.json` file.
+:::
+
+---
+
+## 3-step Installation
+
+### 1. Clone and prepare
+
+```bash
+git clone https://github.com/lemoelink/lemoe.git
+cd lemoe
+chmod +x setup.sh
+./setup.sh
+```
+
+The `setup.sh` script creates the virtual environment, installs dependencies and generates the default configuration files.
+
+### 2. Configure your first expert
+
+Edit `config/experts.json` and add your first expert:
+
+```json
+{
+  "max_experts": 15,
+  "experts": [
+    {
+      "id": 1,
+      "label": "programmer",
+      "description": "Expert in writing, reviewing and debugging source code.",
+      "keywords": [
+        "code", "program", "python", "javascript", "function",
+        "script", "error", "bug", "html", "css", "class", "object",
+        "module", "api", "refactor"
+      ],
+      "type": "ollama",
+      "url": "http://127.0.0.1:11434",
+      "model_name": "qwen2.5-coder:7b"
+    }
+  ]
+}
+```
+
+### 3. Start
+
+```bash
+./start.sh
+```
+
+The server starts at `http://0.0.0.0:11435`. Ready!
+
+---
+
+## Connect your first client
+
+### Open WebUI
+
+**Option A: Ollama-type Connection (Recommended)**
+1. Go to **Settings → Connections → Ollama API**
+2. Base URL: `http://your-ip:11435`
+3. Save and reload — you will see all your experts as available models.
+
+**Option B: OpenAI-type Connection**
+1. Go to **Settings → Connections → OpenAI API**
+2. Base URL: `http://your-ip:11435/v1`
+3. API Key: any value (LEMoE ignores it)
+4. Save and reload.
+
+### cURL / any OpenAI client
+
+```bash
+curl http://localhost:11435/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [{"role": "user", "content": "Write a Python function to sort a list"}],
+    "stream": false
+  }'
+```
+
+LEMoE automatically detects that it is a code question and routes it to the `programmer` expert.
+
+---
+
+## Next steps
+
+<div className="cards-grid">
+  <a href="/instalacion/requisitos" className="card-doc">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="card-icon">
+      <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+      <path d="M12 11h4"></path>
+      <path d="M12 16h4"></path>
+      <path d="M8 11h.01"></path>
+      <path d="M8 16h.01"></path>
+    </svg>
+    <h3>Requirements</h3>
+    <p>Hardware, OS and necessary dependencies.</p>
+  </a>
+  <a href="/configuracion/config-json" className="card-doc">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="card-icon">
+      <line x1="4" y1="21" x2="4" y2="14"></line>
+      <line x1="4" y1="10" x2="4" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="12"></line>
+      <line x1="12" y1="8" x2="12" y2="3"></line>
+      <line x1="20" y1="21" x2="20" y2="16"></line>
+      <line x1="20" y1="12" x2="20" y2="3"></line>
+      <line x1="1" y1="14" x2="7" y2="14"></line>
+      <line x1="9" y1="8" x2="15" y2="8"></line>
+      <line x1="17" y1="16" x2="23" y2="16"></line>
+    </svg>
+    <h3>Configuration</h3>
+    <p>Adjust the router and advanced parameters.</p>
+  </a>
+  <a href="/expertos/arquitectura" className="card-doc">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="card-icon">
+      <circle cx="12" cy="12" r="3"></circle>
+      <circle cx="19" cy="5" r="3"></circle>
+      <circle cx="5" cy="19" r="3"></circle>
+      <path d="M16.5 7.5L14 10"></path>
+      <path d="M10 14l-2.5 2.5"></path>
+      <circle cx="19" cy="19" r="3"></circle>
+      <circle cx="5" cy="5" r="3"></circle>
+      <path d="M14 14l2.5 2.5"></path>
+      <path d="M7.5 7.5L10 10"></path>
+    </svg>
+    <h3>Architecture</h3>
+    <p>How routing works internally.</p>
+  </a>
+  <a href="/avanzado/plugins" className="card-doc">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="card-icon">
+      <path d="M12 2v4"></path>
+      <path d="M16 2v4"></path>
+      <path d="M18 6H6v6a6 6 0 0 0 12 0V6z"></path>
+      <path d="M12 18v4"></path>
+    </svg>
+    <h3>Plugins</h3>
+    <p>Extend LEMoE with custom hooks.</p>
+  </a>
+</div>

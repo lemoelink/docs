@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Instalación": {
+    "message": "Instalación",
+    "description": "The label for category 'Instalación' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Configuración": {
+    "message": "Configuración",
+    "description": "The label for category 'Configuración' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.API": {
+    "message": "API",
+    "description": "The label for category 'API' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Expertos": {
+    "message": "Expertos",
+    "description": "The label for category 'Expertos' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Avanzado": {
+    "message": "Avanzado",
+    "description": "The label for category 'Avanzado' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Soporte": {
+    "message": "Soporte",
+    "description": "The label for category 'Soporte' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Extras": {
+    "message": "Extras",
+    "description": "The label for category 'Extras' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.doc.Inicio Rápido": {
+    "message": "Inicio Rápido",
+    "description": "The label for the doc item 'Inicio Rápido' in sidebar 'tutorialSidebar', linking to the doc intro"
+  }
+}
