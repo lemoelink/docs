@@ -15,6 +15,7 @@ const sidebars: SidebarsConfig = {
         'instalacion/requisitos',
         'instalacion/instalacion',
         'instalacion/primer-arranque',
+        'instalacion/docker',
       ],
     },
     {
@@ -48,6 +49,7 @@ const sidebars: SidebarsConfig = {
       label: 'Avanzado',
       items: [
         'avanzado/open-webui',
+        'avanzado/enrutamiento-contextual',
         'avanzado/plugins',
         'avanzado/cluster-proxy',
         'avanzado/ajuste-rendimiento',
