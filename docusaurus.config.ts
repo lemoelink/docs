@@ -63,6 +63,10 @@ const config: Config = {
           position: 'right',
         },
         {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
           href: 'https://lemoe.link',
           label: 'lemoe.link',
           position: 'right',

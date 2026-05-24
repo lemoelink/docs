@@ -23,4 +23,4 @@ Actualmente el enrutador se basa en librerías estándar en Python. Queremos des
 
 ---
 
-*¿Tienes alguna otra idea o característica que te gustaría ver en LEMoE? ¡Abre un Issue en nuestro repositorio de GitHub!*
+*¿Tienes alguna otra idea o característica que te gustaría ver en LEMoE? ¡Abre un Issue en nuestro repositorio principal de GitHub: [lemoelink/LeMoE/issues](https://github.com/lemoelink/LeMoE/issues)!*
