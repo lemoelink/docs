@@ -35,8 +35,8 @@ Si no quieres instalar PyTorch, desactiva el ML:
 
 **Solución**: Usa solo alfanumérico, guiones y guiones bajos:
 ```
-✅ "programador", "coder-v2", "analista_datos"
-❌ "../evil", "model/sub", "label con espacios"
+[CORRECTO] "programador", "coder-v2", "analista_datos"
+[ERROR]    "../evil", "model/sub", "label con espacios"
 ```
 
 ---
@@ -78,8 +78,8 @@ tail -f logs/app.log | grep Router
 
 **Solución**: Usa la IP privada real de tu servidor:
 ```json
-"url": "http://192.168.1.100:11434"  ✅
-"url": "http://169.254.169.254"      ❌ BLOQUEADA
+"url": "http://192.168.1.100:11434"  // CORRECTO
+"url": "http://169.254.169.254"      // ERROR - BLOQUEADA
 ```
 
 ---

@@ -32,7 +32,6 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
-          editUrl: 'https://github.com/lemoelink/docs/tree/main/',
         },
         blog: false,
         theme: {
