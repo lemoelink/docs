@@ -84,17 +84,18 @@ Define el número máximo de expertos que puede cargar el sistema. Aumentarlo no
 
 ## Experto de fallback
 
-Si ningún experto supera el `confidence_threshold`, el sistema busca un experto marcado como `"fallback": true` o usa el `AIEngine` interno.
+El experto de `fallback` (con ID `0`) es **obligatorio** en todos los archivos `experts.json`. 
+No lleva la propiedad `keywords`, ya que se activa automáticamente por descarte: cuando ningún experto supera el `confidence_threshold` del enrutador, o si no hay coincidencia de keywords, el sistema redirige la petición a este modelo.
 
 ```json
 {
-  "id": 99,
-  "label": "general",
-  "description": "Modelo de propósito general para consultas diversas.",
-  "keywords": ["ayuda", "pregunta", "general", "info", "consulta", "duda", "explicar", "definir", "que", "como", "cuando", "donde", "por que", "quien", "cuanto"],
-  "type": "ollama",
-  "url": "http://127.0.0.1:11434",
-  "model_name": "llama3.1:8b",
-  "fallback": true
+  "id": 0,
+  "label": "fallback",
+  "description": "Modelo de propósito general para cuando el router no puede clasificar el prompt.",
+  "type": "local",
+  "format": "gguf",
+  "model_path": "models/Qwen3.5-0.8B-Q4_K_M.gguf"
 }
 ```
+
+A diferencia de los demás expertos, el campo `keywords` no es necesario ni permitido para el `fallback`. Puedes configurarlo para usar Ollama, APIs externas o modelos locales GGUF, exactamente igual que cualquier otro experto.
