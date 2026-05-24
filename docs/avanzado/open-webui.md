@@ -11,15 +11,18 @@ LEMoE es completamente compatible con [Open WebUI](https://openwebui.com/), la i
 
 ## Configuración
 
+**Opción A: Conexión tipo Ollama (Recomendada)**
 1. Abre Open WebUI y ve a **Settings → Connections**
+2. En la sección **Ollama API**:
+   - **URL Base**: `http://tu-ip-de-lemoe:11435`
+3. Haz clic en **Save** y recarga la página. En el selector de modelos verás todos tus expertos.
 
+**Opción B: Conexión tipo OpenAI**
+1. Abre Open WebUI y ve a **Settings → Connections**
 2. En la sección **OpenAI API**:
    - **URL Base**: `http://tu-ip-de-lemoe:11435/v1`
    - **API Key**: cualquier valor (LEMoE la ignora)
-
-3. Haz clic en **Save** y recarga la página
-
-4. En el selector de modelos verás todos tus expertos listados
+3. Haz clic en **Save** y recarga la página.
 
 ## Comportamiento del enrutamiento
 
@@ -48,7 +51,7 @@ Para sacar el máximo partido de LEMoE, selecciona un modelo genérico y deja qu
 
 **No aparecen modelos en Open WebUI:**
 - Verifica que LEMoE está corriendo: `curl http://tu-ip:11435/api/version`
-- Comprueba que la URL Base tiene `/v1` al final
+- Comprueba que la URL Base es correcta (sin `/v1` para Ollama, o con `/v1` para OpenAI).
 
 **Error de conexión:**
 - Asegúrate de que el firewall permite el puerto 11435

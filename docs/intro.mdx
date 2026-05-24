@@ -19,7 +19,7 @@ LEMoE actúa como un proxy compatible con la API de OpenAI y Ollama. No necesita
 :::
 
 :::tip Configurador Online
-¿Prefieres crear tu configuración de forma visual? Utiliza el [Configurador Online de LEMoE](http://config.lemoe.link/) para generar fácilmente tus archivos `config.json` y `experts.json`.
+¿Prefieres crear tu configuración de forma visual? Utiliza el [Configurador Online de LEMoE](http://config.lemoe.link/) para generar fácilmente tu archivo `experts.json`.
 :::
 
 ---
@@ -76,10 +76,16 @@ El servidor arranca en `http://0.0.0.0:11435`. ¡Listo!
 
 ### Open WebUI
 
+**Opción A: Conexión tipo Ollama (Recomendada)**
+1. Ve a **Settings → Connections → Ollama API**
+2. URL Base: `http://tu-ip:11435`
+3. Guarda y recarga — verás todos tus expertos como modelos disponibles.
+
+**Opción B: Conexión tipo OpenAI**
 1. Ve a **Settings → Connections → OpenAI API**
 2. URL Base: `http://tu-ip:11435/v1`
 3. API Key: cualquier valor (LEMoE la ignora)
-4. Guarda y recarga — verás todos tus expertos como modelos disponibles.
+4. Guarda y recarga.
 
 ### cURL / cualquier cliente OpenAI
 
