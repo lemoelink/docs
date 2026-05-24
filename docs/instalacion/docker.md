@@ -9,7 +9,7 @@ description: Guia para desplegar LEMoE facilmente utilizando contenedores Docker
 
 LEMoE puede desplegarse completamente a través de Docker. Este es el método recomendado para servidores y entornos de producción, ya que evita tener que instalar Python y librerías complejas directamente en tu máquina.
 
-Tenemos tres imágenes oficiales disponibles en Docker Hub bajo el repositorio `lemoelink/lemoe`.
+Tenemos tres imágenes oficiales disponibles en [Docker Hub (lemoelink/lemoe)](https://hub.docker.com/r/lemoelink/lemoe).
 
 ## Imágenes Disponibles
 
@@ -50,6 +50,34 @@ docker run -d -p 11435:11435 \
 1. **`/app/config`**: Al montar esta carpeta, podrás ver y editar los archivos `config.json` y `experts.json` directamente desde tu ordenador sin necesidad de reconstruir el contenedor. Los cambios se aplicarán automáticamente.
 2. **`/app/models`**: Aquí es donde LEMoE guarda los modelos que descarga de internet (como el enrutador semántico). Si no montas este volumen, LEMoE tendrá que descargar cientos de megabytes cada vez que lo enciendas.
 3. **`/app/data`**: Mantiene un registro persistente de las métricas de uso y telemetría de tu servidor.
+
+---
+
+## Despliegue con Docker Compose
+
+Si prefieres gestionar tus contenedores de forma declarativa, puedes crear un archivo `docker-compose.yml` con el siguiente contenido:
+
+```yaml
+version: '3.8'
+
+services:
+  lemoe:
+    image: lemoelink/lemoe:general
+    container_name: lemoe
+    ports:
+      - "11435:11435"
+    volumes:
+      - ./config:/app/config
+      - ./models:/app/models
+      - ./data:/app/data
+    restart: unless-stopped
+```
+
+Para iniciarlo, simplemente ejecuta:
+
+```bash
+docker compose up -d
+```
 
 ## Actualizar a una nueva versión
 
