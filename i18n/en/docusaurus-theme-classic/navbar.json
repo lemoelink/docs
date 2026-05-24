@@ -4,11 +4,11 @@
     "description": "The title in the navbar"
   },
   "item.label.Documentación": {
-    "message": "Documentación",
+    "message": "Documentation",
     "description": "Navbar item with label Documentación"
   },
   "item.label.Configurador": {
-    "message": "Configurador",
+    "message": "Configurator",
     "description": "Navbar item with label Configurador"
   },
   "item.label.lemoe.link": {

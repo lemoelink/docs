@@ -4,11 +4,11 @@
     "description": "The label for version current"
   },
   "sidebar.tutorialSidebar.category.Instalación": {
-    "message": "Instalación",
+    "message": "Installation",
     "description": "The label for category 'Instalación' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Configuración": {
-    "message": "Configuración",
+    "message": "Configuration",
     "description": "The label for category 'Configuración' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.API": {
@@ -16,15 +16,15 @@
     "description": "The label for category 'API' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Expertos": {
-    "message": "Expertos",
+    "message": "Experts",
     "description": "The label for category 'Expertos' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Avanzado": {
-    "message": "Avanzado",
+    "message": "Advanced",
     "description": "The label for category 'Avanzado' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Soporte": {
-    "message": "Soporte",
+    "message": "Support",
     "description": "The label for category 'Soporte' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Extras": {
@@ -32,7 +32,7 @@
     "description": "The label for category 'Extras' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.doc.Inicio Rápido": {
-    "message": "Inicio Rápido",
+    "message": "Quick Start Guide",
     "description": "The label for the doc item 'Inicio Rápido' in sidebar 'tutorialSidebar', linking to the doc intro"
   }
 }
