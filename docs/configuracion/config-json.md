@@ -45,8 +45,10 @@ Para facilitar la creación de tus archivos de configuración, puedes utilizar e
 | `categories_file` | string | `"config/experts.json"` | Ruta al archivo de expertos. Debe estar dentro del proyecto (seguridad). |
 | `confidence_threshold` | float | `0.4` | Probabilidad mínima para seleccionar un experto. Si nadie la alcanza, se usan fallbacks. |
 | `keyword_fallback` | bool | `true` | Activa matching difuso si el ML falla o queda por debajo del umbral. |
-| `softmax_temperature` | float | `0.15` | Controla la "decisividad" del router. Más bajo → más decisivo. Más alto → más suave. |
-| `scoring_weights` | object | ver abajo | Pesos de la fórmula híbrida de puntuación. |
+| `softmax_temperature` | float | `0.15` | Controla la "decisividad" del router. Mas bajo = mas decisivo. Mas alto = mas suave. |
+| `scoring_weights` | object | ver abajo | Pesos de la formula hibrida de puntuacion. |
+| `context_messages` | int | `3` | Numero de mensajes recientes del usuario a concatenar para el enrutamiento en cascada cuando el ultimo mensaje tiene baja confianza. |
+| `context_max_chars` | int | `1600` | Maximo de caracteres para el texto de contexto concatenado, para respetar la ventana de tokens del modelo de embeddings. |
 
 ## Ajuste de pesos (`scoring_weights`)
 
