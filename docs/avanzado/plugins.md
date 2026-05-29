@@ -116,3 +116,9 @@ def before_routing(prompt: str) -> str:
 2. **Manejo de errores**: Siempre envuelve en `try/except` y devuelve el input original en caso de fallo.
 3. **Independencia**: No importes módulos internos de LEMoE. Trabaja con strings puros.
 4. **Idempotencia**: El hook `after_generation` puede llamarse en chunks de streaming — diseña pensando en eso.
+
+## Plugins disponibles
+
+| Plugin | Hook | Descripcion |
+|---|---|---|
+| [Plugin Multimodal (Imagenes)](./plugin-image-router) | `override_route` | Enruta automaticamente peticiones con imagenes a un experto de vision como LLaVA o GPT-4o. |

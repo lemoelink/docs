@@ -43,6 +43,10 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/lemoe-social.png',
+    metadata: [
+      {name: 'keywords', content: 'LLM router, Mixture of Experts, MoE, Ollama proxy, local LLM, AI gateway, OpenAI compatible API, Llama.cpp, ONNX inference, AI self-hosting, LEMoE'},
+      {name: 'description', content: 'LEMoE (Light Easy Mix of Experts) es un proxy y enrutador MoE ultraligero para modelos de IA locales.'}
+    ],
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: false,

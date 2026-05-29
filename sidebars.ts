@@ -51,6 +51,7 @@ const sidebars: SidebarsConfig = {
         'avanzado/open-webui',
         'avanzado/enrutamiento-contextual',
         'avanzado/plugins',
+        'avanzado/plugin-image-router',
         'avanzado/cluster-proxy',
         'avanzado/ajuste-rendimiento',
       ],
