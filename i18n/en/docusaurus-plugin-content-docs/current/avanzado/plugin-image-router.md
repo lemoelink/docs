@@ -126,7 +126,11 @@ If you already have LEMoE installed, you can create it manually:
 mkdir -p plugins
 ```
 
-### 4. Place the plugin
+### 4. Download and place the plugin
+
+You can get the plugin directly from the official repository:
+* **Plugin repository:** [github.com/lemoelink/plugins](https://github.com/lemoelink/plugins)
+* **Direct download:** [image_router.py](https://github.com/lemoelink/plugins/blob/main/image_router.py)
 
 Copy the `image_router.py` file into the `plugins/` directory of your LEMoE installation. The server will load it automatically on the next start.
 
