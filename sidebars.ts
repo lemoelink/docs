@@ -50,8 +50,17 @@ const sidebars: SidebarsConfig = {
       items: [
         'avanzado/open-webui',
         'avanzado/enrutamiento-contextual',
-        'avanzado/plugins',
-        'avanzado/plugin-image-router',
+        {
+          type: 'category',
+          label: 'Sistema de Plugins',
+          link: {
+            type: 'doc',
+            id: 'avanzado/plugins',
+          },
+          items: [
+            'avanzado/plugin-image-router',
+          ],
+        },
         'avanzado/cluster-proxy',
         'avanzado/ajuste-rendimiento',
       ],

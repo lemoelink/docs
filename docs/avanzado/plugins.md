@@ -117,8 +117,16 @@ def before_routing(prompt: str) -> str:
 3. **Independencia**: No importes módulos internos de LEMoE. Trabaja con strings puros.
 4. **Idempotencia**: El hook `after_generation` puede llamarse en chunks de streaming — diseña pensando en eso.
 
+## Repositorio de plugins
+
+Los plugins oficiales de LEMoE estan disponibles en GitHub:
+
+**[github.com/lemoelink/plugins](https://github.com/lemoelink/plugins)**
+
+Para instalar un plugin descarga el fichero `.py` correspondiente y copialo en la carpeta `plugins/` de tu instalacion. El servidor lo cargara en el proximo arranque.
+
 ## Plugins disponibles
 
-| Plugin | Hook | Descripcion |
-|---|---|---|
-| [Plugin Multimodal (Imagenes)](./plugin-image-router) | `override_route` | Enruta automaticamente peticiones con imagenes a un experto de vision como LLaVA o GPT-4o. |
+| Plugin | Repositorio | Hook | Descripcion |
+|---|---|---|---|
+| [Plugin Multimodal (Imagenes)](./plugin-image-router) | [image_router.py](https://github.com/lemoelink/plugins/blob/main/image_router.py) | `override_route` | Enruta automaticamente peticiones con imagenes a un experto de vision como LLaVA o GPT-4o. |

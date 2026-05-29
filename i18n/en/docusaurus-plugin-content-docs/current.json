@@ -34,5 +34,9 @@
   "sidebar.tutorialSidebar.doc.Inicio Rápido": {
     "message": "Quick Start Guide",
     "description": "The label for the doc item 'Inicio Rápido' in sidebar 'tutorialSidebar', linking to the doc intro"
+  },
+  "sidebar.tutorialSidebar.category.Sistema de Plugins": {
+    "message": "Plugin System",
+    "description": "The label for category 'Sistema de Plugins' in sidebar 'tutorialSidebar'"
   }
 }
