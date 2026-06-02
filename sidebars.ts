@@ -59,6 +59,8 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             'avanzado/plugin-image-router',
+            'avanzado/plugin-system-time',
+            'avanzado/plugin-user-profile',
           ],
         },
         'avanzado/cluster-proxy',

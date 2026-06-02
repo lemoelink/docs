@@ -130,3 +130,5 @@ Para instalar un plugin descarga el fichero `.py` correspondiente y copialo en l
 | Plugin | Repositorio | Hook | Descripcion |
 |---|---|---|---|
 | [Plugin Multimodal (Imagenes)](./plugin-image-router) | [image_router.py](https://github.com/lemoelink/plugins/blob/main/image_router.py) | `override_route` | Enruta automaticamente peticiones con imagenes a un experto de vision como LLaVA o GPT-4o. |
+| [Plugin de Fecha y Hora](./plugin-system-time) | [system_time.py](https://github.com/lemoelink/plugins/blob/main/system_time.py) | `override_route` | Inyecta automaticamente la fecha y hora local actual del sistema en el contexto inicial. |
+| [Plugin de Perfil de Usuario](./plugin-user-profile) | [user_profile.py](https://github.com/lemoelink/plugins/blob/main/user_profile.py) | `override_route` | Inyecta las preferencias, nombre e instrucciones personalizadas del usuario en el contexto inicial. |

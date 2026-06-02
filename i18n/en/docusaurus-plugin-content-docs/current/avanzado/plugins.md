@@ -130,3 +130,5 @@ To install a plugin, download the corresponding `.py` file and copy it into the 
 | Plugin | Repository | Hook | Description |
 |---|---|---|---|
 | [Multimodal Plugin (Images)](./plugin-image-router) | [image_router.py](https://github.com/lemoelink/plugins/blob/main/image_router.py) | `override_route` | Automatically routes image requests to a vision expert like LLaVA or GPT-4o. |
+| [System Time Plugin](./plugin-system-time) | [system_time.py](https://github.com/lemoelink/plugins/blob/main/system_time.py) | `override_route` | Automatically injects the current local system date and time into the initial context. |
+| [User Profile Plugin](./plugin-user-profile) | [user_profile.py](https://github.com/lemoelink/plugins/blob/main/user_profile.py) | `override_route` | Injects the user's name, preferences, and custom instructions into the initial context. |
