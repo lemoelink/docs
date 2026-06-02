@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'LEMoE Docs',
   tagline: 'Light Easy Mix Of Experts — Documentación oficial',
-  favicon: 'img/logo.jpg',
+  favicon: 'img/favicon.svg',
 
   url: 'https://docs.lemoe.link',
   baseUrl: '/',
