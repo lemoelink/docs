@@ -2,12 +2,12 @@
 id: router
 title: The Routing Engine
 sidebar_position: 2
-description: How the LEMoE multi-vector semantic router works in detail.
+description: How the l3mcore multi-vector semantic router works in detail.
 ---
 
 # The Routing Engine
 
-The router is the brain of LEMoE. It decides which expert should answer each prompt using a multi-vector hybrid scoring system.
+The router is the brain of l3mcore. It decides which expert should answer each prompt using a multi-vector hybrid scoring system.
 
 ## Initialization (server startup)
 
@@ -45,7 +45,7 @@ This happens **only once** at startup. Real-time comparisons are fast because on
 
 A single average vector of all keywords loses information:
 
-| Problem | Solution in LEMoE |
+| Problem | Solution in l3mcore |
 |---|---|
 | Dispersed keywords cancel each other out | `max_keyword`: any keyword can "win" alone |
 | General intent not captured | `description`: complete semantic phrase |

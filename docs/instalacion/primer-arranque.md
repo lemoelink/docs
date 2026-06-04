@@ -2,7 +2,7 @@
 id: primer-arranque
 title: Primer Arranque
 sidebar_position: 3
-description: Cómo arrancar LEMoE y verificar que funciona correctamente.
+description: Cómo arrancar l3mcore y verificar que funciona correctamente.
 ---
 
 # Primer Arranque
@@ -45,7 +45,7 @@ tail -f logs/app.log
 ### Ejemplo de log de arranque exitoso
 
 ```
-[INFO] LEMoE API Server starting...
+[INFO] l3mcore API Server starting...
 [INFO] GenericRouter initialized with embedding model: intfloat/multilingual-e5-small
 [INFO] Loaded 3 experts from config/experts.json
 [INFO] Expert 'programador' → ollama @ http://127.0.0.1:11434
@@ -75,5 +75,5 @@ Revisa los logs — verás algo como:
 ```
 
 :::tip ¡Funciona!
-Si ves el log de enrutamiento y recibes respuesta, LEMoE está funcionando correctamente. Ahora puedes conectar Open WebUI, Continue, o cualquier cliente compatible con OpenAI.
+Si ves el log de enrutamiento y recibes respuesta, l3mcore está funcionando correctamente. Ahora puedes conectar Open WebUI, Continue, o cualquier cliente compatible con OpenAI.
 :::

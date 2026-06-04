@@ -11,7 +11,7 @@ El plugin `image_router` detecta automaticamente cuando una peticion contiene un
 
 ## El problema que resuelve
 
-El router de LEMoE esta disenado para trabajar con texto. Cuando un cliente como OpenWebUI adjunta una imagen, la envia embebida como un bloque base64 dentro del campo `content` del mensaje. Si esa peticion llegara al modelo de embeddings E5, produciria una puntuacion impredecible y el enrutamiento seria incorrecto.
+El router de l3mcore esta disenado para trabajar con texto. Cuando un cliente como OpenWebUI adjunta una imagen, la envia embebida como un bloque base64 dentro del campo `content` del mensaje. Si esa peticion llegara al modelo de embeddings E5, produciria una puntuacion impredecible y el enrutamiento seria incorrecto.
 
 El plugin intercepta esa peticion antes de que el router la vea y la redirige directamente al experto multimodal.
 
@@ -120,7 +120,7 @@ El plugin busca un experto con el label exacto `image-expert`. Debes crearlo en 
 
 Durante la instalacion con `setup.sh`, cuando se pregunte por el sistema de plugins, responde `y`. Esto crea el directorio `plugins/`.
 
-Si ya tienes LEMoE instalado, puedes crearlo manualmente:
+Si ya tienes l3mcore instalado, puedes crearlo manualmente:
 
 ```bash
 mkdir -p plugins
@@ -132,7 +132,7 @@ Puedes obtener el plugin directamente desde el repositorio oficial:
 * **Repositorio de plugins:** [github.com/lemoelink/plugins](https://github.com/lemoelink/plugins)
 * **Descarga directa:** [image_router.py](https://github.com/lemoelink/plugins/blob/main/image_router.py)
 
-Copia el fichero `image_router.py` en el directorio `plugins/` de tu instalación de LEMoE. El servidor lo cargará automáticamente en el próximo arranque.
+Copia el fichero `image_router.py` en el directorio `plugins/` de tu instalación de l3mcore. El servidor lo cargará automáticamente en el próximo arranque.
 
 ## Verificar que funciona
 
@@ -158,7 +158,7 @@ INFO - Plugin forced route to: image-expert
 | Imagen con URL externa `https://` | Acepta y devia. Se registra un aviso en el log. |
 | Data-URI con MIME no valido (`text/html`, etc.) | Rechazada. El router semantico actua. |
 | Campo `url` vacio o nulo | Rechazado. El router semantico actua. |
-| Si el experto `image-expert` no existe o falla | LEMoE usa el experto de fallback automaticamente. |
+| Si el experto `image-expert` no existe o falla | l3mcore usa el experto de fallback automaticamente. |
 
 ## Avisos en el log
 

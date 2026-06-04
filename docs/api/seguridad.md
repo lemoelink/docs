@@ -2,12 +2,12 @@
 id: seguridad
 title: Seguridad
 sidebar_position: 2
-description: Características de seguridad integradas en el servidor LEMoE.
+description: Características de seguridad integradas en el servidor l3mcore.
 ---
 
 # Seguridad
 
-LEMoE incluye varias capas de protección diseñadas para despliegues cercanos a producción.
+l3mcore incluye varias capas de protección diseñadas para despliegues cercanos a producción.
 
 ## Rate Limiting (Limitación de Tasa)
 
@@ -74,7 +74,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
 
         # Autenticación adicional (opcional)
-        # auth_basic "LEMoE API";
+        # auth_basic "l3mcore API";
         # auth_basic_user_file /etc/nginx/.htpasswd;
     }
 }

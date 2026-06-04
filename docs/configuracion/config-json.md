@@ -2,7 +2,7 @@
 id: config-json
 title: config.json — Router
 sidebar_position: 1
-description: Referencia completa del archivo config/config.json de LEMoE.
+description: Referencia completa del archivo config/config.json de l3mcore.
 ---
 
 # `config.json` — Configuración del Router
@@ -10,7 +10,7 @@ description: Referencia completa del archivo config/config.json de LEMoE.
 El archivo `config/config.json` controla el comportamiento global del motor de enrutamiento y del servidor.
 
 :::tip Configurador Web Online
-Para facilitar la creación de tus archivos de configuración, puedes utilizar el [Configurador Online de LEMoE](http://config.lemoe.link/) para generar de forma visual e intuitiva tu archivo `experts.json`.
+Para facilitar la creación de tus archivos de configuración, puedes utilizar el [Configurador Online de l3mcore](http://config.lemoe.link/) para generar de forma visual e intuitiva tu archivo `experts.json`.
 :::
 
 ## Estructura completa

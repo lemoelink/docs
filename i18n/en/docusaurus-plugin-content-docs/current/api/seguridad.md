@@ -2,12 +2,12 @@
 id: seguridad
 title: Security
 sidebar_position: 2
-description: Security features built into the LEMoE server.
+description: Security features built into the l3mcore server.
 ---
 
 # Security
 
-LEMoE includes several layers of protection designed for near-production deployments.
+l3mcore includes several layers of protection designed for near-production deployments.
 
 ## Rate Limiting
 
@@ -74,7 +74,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
 
         # Additional authentication (optional)
-        # auth_basic "LEMoE API";
+        # auth_basic "l3mcore API";
         # auth_basic_user_file /etc/nginx/.htpasswd;
     }
 }

@@ -2,12 +2,12 @@
 id: plugin-user-profile
 title: User Profile Plugin
 sidebar_position: 5
-description: How to use the user_profile plugin to dynamically customize the responses of all experts in LEMoE with your data and instructions.
+description: How to use the user_profile plugin to dynamically customize the responses of all experts in l3mcore with your data and instructions.
 ---
 
 # User Profile Plugin
 
-The `user_profile` plugin automatically injects a block of user information (name, general conversational preferences, and custom instructions) as a system message at the beginning of the conversation. This allows any LEMoE expert to adapt their tone, format, and style to align with your personal preferences.
+The `user_profile` plugin automatically injects a block of user information (name, general conversational preferences, and custom instructions) as a system message at the beginning of the conversation. This allows any l3mcore expert to adapt their tone, format, and style to align with your personal preferences.
 
 ## The problem it solves
 
@@ -22,7 +22,7 @@ The `user_profile` plugin solves this by centralizing your identity and user pre
 The plugin implements the `override_route` hook, which runs milliseconds before the normal semantic routing logic.
 
 ```
-Request arrives at LEMoE
+Request arrives at l3mcore
         |
         v
 Plugin hook: override_route(messages)
@@ -50,7 +50,7 @@ The plugin securely modifies the messages array in memory and always returns `No
 
 ### 1. Enable the plugins directory
 
-Ensure you have the `plugins/` folder enabled in the root of your LEMoE project.
+Ensure you have the `plugins/` folder enabled in the root of your l3mcore project.
 
 ### 2. Copy the plugin file
 
@@ -87,7 +87,7 @@ Add a `"user_profile"` object to your `config/config.json` file with the desired
 
 ## Verifying it works
 
-When starting the LEMoE server, the system log should confirm that the plugin loaded successfully:
+When starting the l3mcore server, the system log should confirm that the plugin loaded successfully:
 
 ```
 INFO - Loaded plugin: user_profile

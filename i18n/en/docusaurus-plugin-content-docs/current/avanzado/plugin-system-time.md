@@ -2,7 +2,7 @@
 id: plugin-system-time
 title: System Time Plugin
 sidebar_position: 4
-description: How to use the system_time plugin to automatically inject the local date and time into the context of LEMoE's expert models.
+description: How to use the system_time plugin to automatically inject the local date and time into the context of l3mcore's expert models.
 ---
 
 # System Time Plugin
@@ -13,7 +13,7 @@ The `system_time` plugin automatically injects a system message at the beginning
 
 By default, Large Language Models (LLMs) have no awareness of real time or access to the system clock of the machine they run on; their temporal knowledge is strictly limited to the training cutoff date. 
 
-By dynamically injecting the system date and time before processing each request, LEMoE equips all its experts with runtime temporal awareness.
+By dynamically injecting the system date and time before processing each request, l3mcore equips all its experts with runtime temporal awareness.
 
 ---
 
@@ -22,7 +22,7 @@ By dynamically injecting the system date and time before processing each request
 The plugin implements the `override_route` hook, which runs milliseconds before the normal semantic routing logic.
 
 ```
-Request arrives at LEMoE
+Request arrives at l3mcore
         |
         v
 Plugin hook: override_route(messages)
@@ -45,7 +45,7 @@ The plugin securely modifies the messages array in memory and always returns `No
 
 ### 1. Enable the plugins directory
 
-Ensure you have the `plugins/` folder enabled in the root of your LEMoE project.
+Ensure you have the `plugins/` folder enabled in the root of your l3mcore project.
 
 ### 2. Copy the plugin file
 
@@ -74,7 +74,7 @@ You can customize this format using Python's standard time formatting tokens (`s
 
 ## Verifying it works
 
-When starting the LEMoE server, the system log should confirm that the plugin loaded successfully:
+When starting the l3mcore server, the system log should confirm that the plugin loaded successfully:
 
 ```
 INFO - Loaded plugin: system_time

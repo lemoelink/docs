@@ -2,7 +2,7 @@
 id: ajuste-rendimiento
 title: Ajuste de Rendimiento
 sidebar_position: 4
-description: Optimización del rendimiento de LEMoE para diferentes tipos de hardware.
+description: Optimización del rendimiento de l3mcore para diferentes tipos de hardware.
 ---
 
 # Ajuste de Rendimiento
@@ -61,7 +61,7 @@ INTER_THREADS = 2
 ### Servidor con GPU
 
 Para máxima velocidad, usa backends Ollama con GPU o vLLM:
-- El router de LEMoE es ligero (CPU only)
+- El router de l3mcore es ligero (CPU only)
 - Los modelos expertos en GPU vía Ollama/vLLM
 - Puedes subir `MAX_LOADED_MODELS` si tienes VRAM suficiente
 

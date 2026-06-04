@@ -3,7 +3,7 @@ id: intro
 title: Quick Start
 sidebar_position: 1
 slug: /
-description: LEMoE quick start guide — install and set up your AI router in minutes.
+description: l3mcore quick start guide — install and set up your AI router in minutes.
 ---
 
 # Quick Start Guide
@@ -12,14 +12,14 @@ description: LEMoE quick start guide — install and set up your AI router in mi
 This project is currently in active development phase. However, its core functionality (routing, model loading and backends) is fully operational and stable for use.
 :::
 
-**LEMoE (Light Easy Mix Of Experts)** is an intelligent routing middleware for AI. It receives your prompts, analyzes them and routes them to the most suitable specialized model — completely transparent to your applications.
+**l3mcore (Light Easy Mix Of Experts)** is an intelligent routing middleware for AI. It receives your prompts, analyzes them and routes them to the most suitable specialized model — completely transparent to your applications.
 
-:::info What does LEMoE do?
-LEMoE acts as a proxy compatible with the OpenAI and Ollama API. You don't need to change your code: simply change the base URL and LEMoE handles the rest.
+:::info What does l3mcore do?
+l3mcore acts as a proxy compatible with the OpenAI and Ollama API. You don't need to change your code: simply change the base URL and l3mcore handles the rest.
 :::
 
 :::tip Online Configurator
-Do you prefer to create your configuration visually? Use the [LEMoE Online Configurator](http://config.lemoe.link/) to easily generate your `experts.json` file.
+Do you prefer to create your configuration visually? Use the [l3mcore Online Configurator](http://config.lemoe.link/) to easily generate your `experts.json` file.
 :::
 
 ---
@@ -29,7 +29,7 @@ Do you prefer to create your configuration visually? Use the [LEMoE Online Confi
 ### 1. Clone and prepare
 
 ```bash
-git clone https://github.com/lemoelink/lemoe.git
+git clone https://github.com/lemoelink/l3mcore.git
 cd lemoe
 chmod +x setup.sh
 ./setup.sh
@@ -84,7 +84,7 @@ The server starts at `http://0.0.0.0:11435`. Ready!
 **Option B: OpenAI-type Connection**
 1. Go to **Settings → Connections → OpenAI API**
 2. Base URL: `http://your-ip:11435/v1`
-3. API Key: any value (LEMoE ignores it)
+3. API Key: any value (l3mcore ignores it)
 4. Save and reload.
 
 ### cURL / any OpenAI client
@@ -98,7 +98,7 @@ curl http://localhost:11435/v1/chat/completions \
   }'
 ```
 
-LEMoE automatically detects that it is a code question and routes it to the `programmer` expert.
+l3mcore automatically detects that it is a code question and routes it to the `programmer` expert.
 
 ---
 
@@ -155,6 +155,6 @@ LEMoE automatically detects that it is a code question and routes it to the `pro
       <path d="M12 18v4"></path>
     </svg>
     <h3>Plugins</h3>
-    <p>Extend LEMoE with custom hooks.</p>
+    <p>Extend l3mcore with custom hooks.</p>
   </a>
 </div>

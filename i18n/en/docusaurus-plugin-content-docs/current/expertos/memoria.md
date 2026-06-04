@@ -2,12 +2,12 @@
 id: memoria
 title: Memory Management
 sidebar_position: 3
-description: How LEMoE manages RAM for local ONNX and GGUF models.
+description: How l3mcore manages RAM for local ONNX and GGUF models.
 ---
 
 # Memory Management
 
-For local models (`type: "local"`), LEMoE implements an automatic memory manager that prevents RAM exhaustion.
+For local models (`type: "local"`), l3mcore implements an automatic memory manager that prevents RAM exhaustion.
 
 ## Model lifecycle
 
@@ -61,7 +61,7 @@ INTER_THREADS = 1       # Usually doesn't need changing
 ```
 
 :::tip Dedicated hardware
-If LEMoE runs on a dedicated server and only one local expert will be active at a time, you can increase `INTRA_THREADS` to 4-8 to improve latency for individual requests.
+If l3mcore runs on a dedicated server and only one local expert will be active at a time, you can increase `INTRA_THREADS` to 4-8 to improve latency for individual requests.
 :::
 
 :::warning Raspberry Pi / limited hardware

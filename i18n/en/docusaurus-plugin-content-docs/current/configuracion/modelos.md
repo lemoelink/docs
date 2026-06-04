@@ -2,12 +2,12 @@
 id: modelos
 title: Model Types (Backends)
 sidebar_position: 3
-description: How to connect Ollama, external APIs, and local ONNX/GGUF models in LEMoE.
+description: How to connect Ollama, external APIs, and local ONNX/GGUF models in l3mcore.
 ---
 
 # Model Types (Backends)
 
-LEMoE supports three types of backends that you can mix in the same `experts.json`.
+l3mcore supports three types of backends that you can mix in the same `experts.json`.
 
 ---
 
@@ -77,7 +77,7 @@ export OPENAI_API_KEY="sk-..."
 
 ## 3. Local Models (`type: "local"`)
 
-Loads ONNX or GGUF models directly into LEMoE's process memory, without the need for Ollama.
+Loads ONNX or GGUF models directly into l3mcore's process memory, without the need for Ollama.
 
 ```json
 {
@@ -94,7 +94,7 @@ Loads ONNX or GGUF models directly into LEMoE's process memory, without the need
 
 ### Automatic memory management
 
-Local models consume RAM when loaded. LEMoE applies automatic limits:
+Local models consume RAM when loaded. l3mcore applies automatic limits:
 
 - **Maximum 3 simultaneous models** in memory
 - **LRU eviction**: if a 4th is needed, the least used is unloaded

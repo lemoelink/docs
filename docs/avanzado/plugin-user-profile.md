@@ -2,12 +2,12 @@
 id: plugin-user-profile
 title: Plugin de Perfil de Usuario
 sidebar_position: 5
-description: Cómo usar el plugin user_profile para personalizar dinámicamente las respuestas de todos los expertos en LEMoE con tus datos e instrucciones.
+description: Cómo usar el plugin user_profile para personalizar dinámicamente las respuestas de todos los expertos en l3mcore con tus datos e instrucciones.
 ---
 
 # Plugin de Perfil de Usuario
 
-El plugin `user_profile` inyecta automáticamente un bloque de información del usuario (nombre, preferencias generales de conversación e instrucciones personalizadas) como un mensaje del sistema al principio de la conversación. Esto permite a cualquier experto de LEMoE adaptar su tono, formato y estilo de respuesta para alinearse con tus preferencias personales.
+El plugin `user_profile` inyecta automáticamente un bloque de información del usuario (nombre, preferencias generales de conversación e instrucciones personalizadas) como un mensaje del sistema al principio de la conversación. Esto permite a cualquier experto de l3mcore adaptar su tono, formato y estilo de respuesta para alinearse con tus preferencias personales.
 
 ## El problema que resuelve
 
@@ -22,7 +22,7 @@ El plugin `user_profile` resuelve esto centralizando tu identidad y preferencias
 El plugin implementa el hook `override_route`, que se ejecuta milisegundos antes del enrutamiento semántico habitual.
 
 ```
-Peticion llega a LEMoE
+Peticion llega a l3mcore
         |
         v
 Plugin hook: override_route(messages)
@@ -50,7 +50,7 @@ El plugin modifica de forma segura el array de mensajes en memoria y siempre dev
 
 ### 1. Activar el directorio de plugins
 
-Asegúrate de tener habilitada la carpeta `plugins/` en la raíz de tu proyecto de LEMoE.
+Asegúrate de tener habilitada la carpeta `plugins/` en la raíz de tu proyecto de l3mcore.
 
 ### 2. Copiar el archivo del plugin
 
@@ -87,7 +87,7 @@ Añade un objeto `"user_profile"` a tu archivo `config/config.json` con los camp
 
 ## Verificar que funciona
 
-Al arrancar el servidor de LEMoE, el log del sistema debe confirmar la carga del plugin:
+Al arrancar el servidor de l3mcore, el log del sistema debe confirmar la carga del plugin:
 
 ```
 INFO - Loaded plugin: user_profile

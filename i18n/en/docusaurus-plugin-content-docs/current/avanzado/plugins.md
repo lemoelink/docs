@@ -2,16 +2,16 @@
 id: plugins
 title: Plugin System
 sidebar_position: 2
-description: How to create plugins to extend LEMoE with pre and post-processing hooks.
+description: How to create plugins to extend l3mcore with pre and post-processing hooks.
 ---
 
 # Plugin System
 
-LEMoE implements a plugin architecture based on **Hooks** that allows extending functionality without touching the core code.
+l3mcore implements a plugin architecture based on **Hooks** that allows extending functionality without touching the core code.
 
 ## How it works
 
-Any `.py` file in the `plugins/` folder is automatically imported when starting LEMoE.
+Any `.py` file in the `plugins/` folder is automatically imported when starting l3mcore.
 
 ```
 lemoe/
@@ -22,7 +22,7 @@ lemoe/
 ```
 
 :::info Silent loading
-If a plugin has syntactic errors, LEMoE registers it in the log and continues working without crashing.
+If a plugin has syntactic errors, l3mcore registers it in the log and continues working without crashing.
 :::
 
 ## Available hooks
@@ -114,16 +114,16 @@ def before_routing(prompt: str) -> str:
 
 1. **Speed**: Hooks are synchronous. If you make HTTP requests, use low timeouts (≤2s).
 2. **Error handling**: Always wrap in `try/except` and return the original input in case of failure.
-3. **Independence**: Do not import internal LEMoE modules. Work with pure strings.
+3. **Independence**: Do not import internal l3mcore modules. Work with pure strings.
 4. **Idempotence**: The `after_generation` hook can be called in streaming chunks — design with that in mind.
 
 ## Plugin repository
 
-Official LEMoE plugins are available on GitHub:
+Official l3mcore plugins are available on GitHub:
 
 **[github.com/lemoelink/plugins](https://github.com/lemoelink/plugins)**
 
-To install a plugin, download the corresponding `.py` file and copy it into the `plugins/` folder of your LEMoE installation. The server will load it on the next start.
+To install a plugin, download the corresponding `.py` file and copy it into the `plugins/` folder of your l3mcore installation. The server will load it on the next start.
 
 ## Available plugins
 

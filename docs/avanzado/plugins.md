@@ -2,16 +2,16 @@
 id: plugins
 title: Sistema de Plugins
 sidebar_position: 2
-description: Cómo crear plugins para extender LEMoE con hooks de pre y post-procesamiento.
+description: Cómo crear plugins para extender l3mcore con hooks de pre y post-procesamiento.
 ---
 
 # Sistema de Plugins
 
-LEMoE implementa una arquitectura de plugins basada en **Hooks** que permite extender la funcionalidad sin tocar el código central.
+l3mcore implementa una arquitectura de plugins basada en **Hooks** que permite extender la funcionalidad sin tocar el código central.
 
 ## Cómo funciona
 
-Cualquier archivo `.py` en la carpeta `plugins/` se importa automáticamente al arrancar LEMoE.
+Cualquier archivo `.py` en la carpeta `plugins/` se importa automáticamente al arrancar l3mcore.
 
 ```
 lemoe/
@@ -22,7 +22,7 @@ lemoe/
 ```
 
 :::info Carga silenciosa
-Si un plugin tiene errores sintácticos, LEMoE lo registra en el log y continúa funcionando sin colapsar.
+Si un plugin tiene errores sintácticos, l3mcore lo registra en el log y continúa funcionando sin colapsar.
 :::
 
 ## Hooks disponibles
@@ -114,12 +114,12 @@ def before_routing(prompt: str) -> str:
 
 1. **Velocidad**: Los hooks son síncronos. Si haces requests HTTP, usa timeouts bajos (≤2s).
 2. **Manejo de errores**: Siempre envuelve en `try/except` y devuelve el input original en caso de fallo.
-3. **Independencia**: No importes módulos internos de LEMoE. Trabaja con strings puros.
+3. **Independencia**: No importes módulos internos de l3mcore. Trabaja con strings puros.
 4. **Idempotencia**: El hook `after_generation` puede llamarse en chunks de streaming — diseña pensando en eso.
 
 ## Repositorio de plugins
 
-Los plugins oficiales de LEMoE estan disponibles en GitHub:
+Los plugins oficiales de l3mcore estan disponibles en GitHub:
 
 **[github.com/lemoelink/plugins](https://github.com/lemoelink/plugins)**
 

@@ -2,7 +2,7 @@
 id: requisitos
 title: System Requirements
 sidebar_position: 1
-description: Hardware and software requirements to install LEMoE.
+description: Hardware and software requirements to install l3mcore.
 ---
 
 # System Requirements
@@ -13,11 +13,11 @@ description: Hardware and software requirements to install LEMoE.
 |---|---|---|
 | CPU | 2 cores | 4+ cores |
 | RAM | 2 GB | 8 GB+ |
-| Disk | 500 MB (LEMoE) | Depends on local models |
+| Disk | 500 MB (l3mcore) | Depends on local models |
 | GPU | Not required | Optional (for local ONNX/GGUF) |
 
 :::tip Raspberry Pi
-LEMoE is so lightweight that it can run on a Raspberry Pi 4 with 4 GB of RAM. Ideal for homelabs.
+l3mcore is so lightweight that it can run on a Raspberry Pi 4 with 4 GB of RAM. Ideal for homelabs.
 :::
 
 ## Software

@@ -2,12 +2,12 @@
 id: arquitectura
 title: Arquitectura del Sistema
 sidebar_position: 1
-description: Visión general de la arquitectura interna de LEMoE y su flujo de enrutamiento.
+description: Visión general de la arquitectura interna de l3mcore y su flujo de enrutamiento.
 ---
 
 # Arquitectura del Sistema
 
-LEMoE está diseñado como un sistema middleware modular. Se sitúa entre las aplicaciones cliente y los modelos de IA reales.
+l3mcore está diseñado como un sistema middleware modular. Se sitúa entre las aplicaciones cliente y los modelos de IA reales.
 
 ## Flujo de Alto Nivel
 
@@ -29,7 +29,7 @@ sequenceDiagram
     Dispatcher-->>Client: Transmite tokens al cliente
 ```
 
-1. **Petición del Cliente**: HTTP al servidor API de LEMoE
+1. **Petición del Cliente**: HTTP al servidor API de l3mcore
 2. **Seguridad y Validación**: validación de tamaño, rate limit, sanitización
 3. **Enrutamiento**: el Router analiza el prompt y determina el experto
 4. **Despacho**: el Expert Dispatcher reenvía al backend correcto

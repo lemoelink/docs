@@ -2,12 +2,12 @@
 id: router
 title: El Motor de Enrutamiento
 sidebar_position: 2
-description: Cómo funciona el router semántico multi-vector de LEMoE en detalle.
+description: Cómo funciona el router semántico multi-vector de l3mcore en detalle.
 ---
 
 # El Motor de Enrutamiento
 
-El router es el cerebro de LEMoE. Decide qué experto debe responder cada prompt mediante un sistema de puntuación híbrida multi-vector.
+El router es el cerebro de l3mcore. Decide qué experto debe responder cada prompt mediante un sistema de puntuación híbrida multi-vector.
 
 ## Inicialización (arranque del servidor)
 
@@ -45,7 +45,7 @@ Esto ocurre **una sola vez** al arranque. Las comparaciones en tiempo real son r
 
 Un solo vector promedio de todas las keywords pierde información:
 
-| Problema | Solución en LEMoE |
+| Problema | Solución en l3mcore |
 |---|---|
 | Keywords dispersas se anulan entre sí | `max_keyword`: cualquier keyword puede "ganar" sola |
 | Intención general no capturada | `description`: frase semántica completa |

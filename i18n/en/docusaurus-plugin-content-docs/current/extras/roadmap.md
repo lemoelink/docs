@@ -2,18 +2,18 @@
 id: roadmap
 title: Roadmap / To-Do
 sidebar_position: 1
-description: Future features and development roadmap for LEMoE.
+description: Future features and development roadmap for l3mcore.
 ---
 
 # Roadmap (To-Do)
 
-LEMoE is in continuous development. Below are some of the key features and improvements we plan to incorporate in future versions:
+l3mcore is in continuous development. Below are some of the key features and improvements we plan to incorporate in future versions:
 
 ## Plugin System (In progress)
-Currently, the plugin system is partially implemented. Our goal is to complete it to allow developers to extend LEMoE's functionality through custom *hooks* that intercept, modify, or analyze requests and responses in real-time, without touching the core source code.
+Currently, the plugin system is partially implemented. Our goal is to complete it to allow developers to extend l3mcore's functionality through custom *hooks* that intercept, modify, or analyze requests and responses in real-time, without touching the core source code.
 
 ## VRAM Management
-One of the major planned improvements is an intelligent VRAM (video memory) management system for local models. The idea is for LEMoE to be able to:
+One of the major planned improvements is an intelligent VRAM (video memory) management system for local models. The idea is for l3mcore to be able to:
 - Unload inactive experts from memory.
 - Dynamically load required experts into memory.
 - Avoid "Out of Memory" (OOM) errors when quickly switching between multiple heavy models hosted on the same machine.
@@ -23,4 +23,4 @@ Currently, the router is based on standard Python libraries. We want to develop 
 
 ---
 
-*Do you have any other ideas or features you would like to see in LEMoE? Open an Issue in our main GitHub repository: [lemoelink/LeMoE/issues](https://github.com/lemoelink/LeMoE/issues)!*
+*Do you have any other ideas or features you would like to see in l3mcore? Open an Issue in our main GitHub repository: [lemoelink/l3mcore/issues](https://github.com/lemoelink/l3mcore/issues)!*

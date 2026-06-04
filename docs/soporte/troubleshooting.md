@@ -2,7 +2,7 @@
 id: troubleshooting
 title: Solución de Problemas
 sidebar_position: 1
-description: Soluciones para los problemas más comunes con LEMoE.
+description: Soluciones para los problemas más comunes con l3mcore.
 ---
 
 # Solución de Problemas

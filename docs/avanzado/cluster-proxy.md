@@ -2,18 +2,18 @@
 id: cluster-proxy
 title: Clúster Proxy
 sidebar_position: 3
-description: Cómo usar LEMoE para unificar múltiples servidores GPU, instancias Ollama y APIs cloud.
+description: Cómo usar l3mcore para unificar múltiples servidores GPU, instancias Ollama y APIs cloud.
 ---
 
 # Clúster Proxy
 
-LEMoE puede actuar como un **punto de entrada unificado** para una infraestructura heterogénea de backends de IA.
+l3mcore puede actuar como un **punto de entrada unificado** para una infraestructura heterogénea de backends de IA.
 
 ## Arquitectura de clúster
 
 ```
                          ┌─────────────────────────────────┐
-                         │            LEMoE                │
+                         │            l3mcore                │
   Open WebUI ──────────► │   Router ML + Expert Dispatcher │
   Continue (IDE) ──────► │                                 │
   Scripts/API ──────────► │   :11435                        │

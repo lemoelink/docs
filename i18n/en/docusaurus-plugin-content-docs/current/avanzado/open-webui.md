@@ -2,12 +2,12 @@
 id: open-webui
 title: Open WebUI Integration
 sidebar_position: 1
-description: How to connect Open WebUI to LEMoE to use all your experts from a graphical interface.
+description: How to connect Open WebUI to l3mcore to use all your experts from a graphical interface.
 ---
 
 # Open WebUI Integration
 
-LEMoE is fully compatible with [Open WebUI](https://openwebui.com/), the most popular web interface for self-hosted AI models.
+l3mcore is fully compatible with [Open WebUI](https://openwebui.com/), the most popular web interface for self-hosted AI models.
 
 ## Configuration
 
@@ -21,19 +21,19 @@ LEMoE is fully compatible with [Open WebUI](https://openwebui.com/), the most po
 1. Open Open WebUI and go to **Settings → Connections**
 2. In the **OpenAI API** section:
    - **Base URL**: `http://your-lemoe-ip:11435/v1`
-   - **API Key**: any value (LEMoE ignores it)
+   - **API Key**: any value (l3mcore ignores it)
 3. Click on **Save** and reload the page.
 
 ## Routing behavior
 
-| Configuration in Open WebUI | Behavior in LEMoE |
+| Configuration in Open WebUI | Behavior in l3mcore |
 |---|---|
-| Model: `LEMoE Default` (or any generic name) | The ML router automatically chooses the best expert |
+| Model: `l3mcore Default` (or any generic name) | The ML router automatically chooses the best expert |
 | Model: `programador` (exact label) | Goes straight to the `programador` expert, bypassing the router |
 | Model: `escritor_creativo` | Goes straight to the `escritor_creativo` expert |
 
 :::tip Use automatic routing
-To get the most out of LEMoE, select a generic model and let the router choose. You will see in the logs how it decides in real time.
+To get the most out of l3mcore, select a generic model and let the router choose. You will see in the logs how it decides in real time.
 :::
 
 ## Example log with Open WebUI
@@ -50,7 +50,7 @@ To get the most out of LEMoE, select a generic model and let the router choose. 
 ## Troubleshooting
 
 **No models appear in Open WebUI:**
-- Verify that LEMoE is running: `curl http://your-ip:11435/api/version`
+- Verify that l3mcore is running: `curl http://your-ip:11435/api/version`
 - Check that the Base URL is correct (without `/v1` for Ollama, or with `/v1` for OpenAI).
 
 **Connection error:**

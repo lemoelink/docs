@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'LEMoE Docs',
+  title: 'l3mcore Docs',
   tagline: 'Light Easy Mix Of Experts — Documentación oficial',
   favicon: 'img/favicon.svg',
 
@@ -44,8 +44,8 @@ const config: Config = {
   themeConfig: {
     image: 'img/lemoe-social.png',
     metadata: [
-      {name: 'keywords', content: 'LLM router, Mixture of Experts, MoE, Ollama proxy, local LLM, AI gateway, OpenAI compatible API, Llama.cpp, ONNX inference, AI self-hosting, LEMoE'},
-      {name: 'description', content: 'LEMoE (Light Easy Mix of Experts) es un proxy y enrutador MoE ultraligero para modelos de IA locales.'}
+      {name: 'keywords', content: 'LLM router, Mixture of Experts, MoE, Ollama proxy, local LLM, AI gateway, OpenAI compatible API, Llama.cpp, ONNX inference, AI self-hosting, l3mcore'},
+      {name: 'description', content: 'l3mcore (Light Easy Mix of Experts) es un proxy y enrutador MoE ultraligero para modelos de IA locales.'}
     ],
     colorMode: {
       defaultMode: 'dark',
@@ -53,7 +53,7 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'LEMoE',
+      title: 'l3mcore',
       items: [
         {
           type: 'docSidebar',
@@ -102,7 +102,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} LEMoE — Light Easy Mix Of Experts`,
+      copyright: `© ${new Date().getFullYear()} l3mcore — Light Easy Mix Of Experts`,
     },
     prism: {
       theme: prismThemes.vsDark,

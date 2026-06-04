@@ -9,7 +9,7 @@ description: Cascading routing with conversation memory and silent self-recovery
 
 ## Cascading Contextual Routing
 
-LEMoE evaluates the context of the conversation to maintain thematic continuity in multi-turn chats. This system is 100% stateless: it does not require a database, nor sessions, nor RAM usage per user.
+l3mcore evaluates the context of the conversation to maintain thematic continuity in multi-turn chats. This system is 100% stateless: it does not require a database, nor sessions, nor RAM usage per user.
 
 It works with any number of simultaneous users because each request carries its own context through the standard `messages` array of OpenAI. OpenWebUI, Continue.dev and any other compatible client already send the complete history of the conversation in each request.
 

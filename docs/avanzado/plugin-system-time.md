@@ -2,7 +2,7 @@
 id: plugin-system-time
 title: Plugin de Fecha y Hora
 sidebar_position: 4
-description: Cómo usar el plugin system_time para inyectar automáticamente la fecha y hora local en el contexto del modelo experto de LEMoE.
+description: Cómo usar el plugin system_time para inyectar automáticamente la fecha y hora local en el contexto del modelo experto de l3mcore.
 ---
 
 # Plugin de Fecha y Hora del Sistema
@@ -13,7 +13,7 @@ El plugin `system_time` inyecta automáticamente un mensaje del sistema al princ
 
 Por defecto, los modelos de lenguaje (LLM) no tienen conciencia del tiempo real ni acceso al reloj del sistema donde se ejecutan; sus conocimientos temporales están limitados a la fecha de corte de su entrenamiento. 
 
-Al inyectar dinámicamente la fecha y hora del sistema antes de procesar cada petición, LEMoE dota a todos sus expertos de conciencia temporal en tiempo de ejecución.
+Al inyectar dinámicamente la fecha y hora del sistema antes de procesar cada petición, l3mcore dota a todos sus expertos de conciencia temporal en tiempo de ejecución.
 
 ---
 
@@ -22,7 +22,7 @@ Al inyectar dinámicamente la fecha y hora del sistema antes de procesar cada pe
 El plugin implementa el hook `override_route`, que se ejecuta milisegundos antes del enrutamiento semántico habitual.
 
 ```
-Peticion llega a LEMoE
+Peticion llega a l3mcore
         |
         v
 Plugin hook: override_route(messages)
@@ -45,7 +45,7 @@ El plugin modifica de forma segura el array de mensajes en memoria y siempre dev
 
 ### 1. Activar el directorio de plugins
 
-Asegúrate de tener habilitada la carpeta `plugins/` en la raíz de tu proyecto de LEMoE.
+Asegúrate de tener habilitada la carpeta `plugins/` en la raíz de tu proyecto de l3mcore.
 
 ### 2. Copiar el archivo del plugin
 
@@ -74,7 +74,7 @@ Puedes personalizar este formato utilizando la directiva estándar de formateo d
 
 ## Verificar que funciona
 
-Al arrancar el servidor de LEMoE, el log del sistema debe confirmar la carga del plugin:
+Al arrancar el servidor de l3mcore, el log del sistema debe confirmar la carga del plugin:
 
 ```
 INFO - Loaded plugin: system_time

@@ -11,7 +11,7 @@ The `image_router` plugin automatically detects when a request contains an image
 
 ## The problem it solves
 
-LEMoE's router is designed to work with text. When a client like OpenWebUI attaches an image, it is sent embedded as a base64 block inside the message `content` field. If that request reached the E5 embedding model, it would produce an unpredictable score and routing would be incorrect.
+l3mcore's router is designed to work with text. When a client like OpenWebUI attaches an image, it is sent embedded as a base64 block inside the message `content` field. If that request reached the E5 embedding model, it would produce an unpredictable score and routing would be incorrect.
 
 The plugin intercepts that request before the router sees it and redirects it directly to the multimodal expert.
 
@@ -120,7 +120,7 @@ The plugin looks for an expert with the exact label `image-expert`. You must cre
 
 During installation with `setup.sh`, when asked about the plugin system, answer `y`. This creates the `plugins/` directory.
 
-If you already have LEMoE installed, you can create it manually:
+If you already have l3mcore installed, you can create it manually:
 
 ```bash
 mkdir -p plugins
@@ -132,7 +132,7 @@ You can get the plugin directly from the official repository:
 * **Plugin repository:** [github.com/lemoelink/plugins](https://github.com/lemoelink/plugins)
 * **Direct download:** [image_router.py](https://github.com/lemoelink/plugins/blob/main/image_router.py)
 
-Copy the `image_router.py` file into the `plugins/` directory of your LEMoE installation. The server will load it automatically on the next start.
+Copy the `image_router.py` file into the `plugins/` directory of your l3mcore installation. The server will load it automatically on the next start.
 
 ## Verifying it works
 
@@ -158,7 +158,7 @@ INFO - Plugin forced route to: image-expert
 | Image with external `https://` URL | Accepted and routed. A warning is logged. |
 | Data-URI with invalid MIME (`text/html`, etc.) | Rejected. Semantic router acts. |
 | Empty or null `url` field | Rejected. Semantic router acts. |
-| If the `image-expert` expert does not exist or fails | LEMoE uses the fallback expert automatically. |
+| If the `image-expert` expert does not exist or fails | l3mcore uses the fallback expert automatically. |
 
 ## Log warnings
 

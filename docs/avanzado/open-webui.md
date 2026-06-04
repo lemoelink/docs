@@ -2,12 +2,12 @@
 id: open-webui
 title: Integración con Open WebUI
 sidebar_position: 1
-description: Cómo conectar Open WebUI a LEMoE para usar todos tus expertos desde una interfaz gráfica.
+description: Cómo conectar Open WebUI a l3mcore para usar todos tus expertos desde una interfaz gráfica.
 ---
 
 # Integración con Open WebUI
 
-LEMoE es completamente compatible con [Open WebUI](https://openwebui.com/), la interfaz web más popular para modelos de IA auto-hospedados.
+l3mcore es completamente compatible con [Open WebUI](https://openwebui.com/), la interfaz web más popular para modelos de IA auto-hospedados.
 
 ## Configuración
 
@@ -21,19 +21,19 @@ LEMoE es completamente compatible con [Open WebUI](https://openwebui.com/), la i
 1. Abre Open WebUI y ve a **Settings → Connections**
 2. En la sección **OpenAI API**:
    - **URL Base**: `http://tu-ip-de-lemoe:11435/v1`
-   - **API Key**: cualquier valor (LEMoE la ignora)
+   - **API Key**: cualquier valor (l3mcore la ignora)
 3. Haz clic en **Save** y recarga la página.
 
 ## Comportamiento del enrutamiento
 
-| Configuración en Open WebUI | Comportamiento en LEMoE |
+| Configuración en Open WebUI | Comportamiento en l3mcore |
 |---|---|
-| Modelo: `LEMoE Default` (o cualquier nombre genérico) | El router ML elige automáticamente el mejor experto |
+| Modelo: `l3mcore Default` (o cualquier nombre genérico) | El router ML elige automáticamente el mejor experto |
 | Modelo: `programador` (etiqueta exacta) | Va directo al experto `programador`, sin router |
 | Modelo: `escritor_creativo` | Va directo al experto `escritor_creativo` |
 
 :::tip Usa enrutamiento automático
-Para sacar el máximo partido de LEMoE, selecciona un modelo genérico y deja que el router elija. Verás en los logs cómo decide en tiempo real.
+Para sacar el máximo partido de l3mcore, selecciona un modelo genérico y deja que el router elija. Verás en los logs cómo decide en tiempo real.
 :::
 
 ## Ejemplo de log con Open WebUI
@@ -50,7 +50,7 @@ Para sacar el máximo partido de LEMoE, selecciona un modelo genérico y deja qu
 ## Solución de problemas
 
 **No aparecen modelos en Open WebUI:**
-- Verifica que LEMoE está corriendo: `curl http://tu-ip:11435/api/version`
+- Verifica que l3mcore está corriendo: `curl http://tu-ip:11435/api/version`
 - Comprueba que la URL Base es correcta (sin `/v1` para Ollama, o con `/v1` para OpenAI).
 
 **Error de conexión:**

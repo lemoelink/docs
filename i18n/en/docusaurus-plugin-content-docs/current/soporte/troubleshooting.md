@@ -2,7 +2,7 @@
 id: troubleshooting
 title: Troubleshooting
 sidebar_position: 1
-description: Solutions for the most common issues with LEMoE.
+description: Solutions for the most common issues with l3mcore.
 ---
 
 # Troubleshooting

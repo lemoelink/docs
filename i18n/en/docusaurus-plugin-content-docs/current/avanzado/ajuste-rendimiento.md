@@ -2,7 +2,7 @@
 id: ajuste-rendimiento
 title: Performance Tuning
 sidebar_position: 4
-description: Optimizing LEMoE's performance for different types of hardware.
+description: Optimizing l3mcore's performance for different types of hardware.
 ---
 
 # Performance Tuning
@@ -61,7 +61,7 @@ INTER_THREADS = 2
 ### Server with GPU
 
 For maximum speed, use Ollama backends with GPU or vLLM:
-- LEMoE's router is lightweight (CPU only)
+- l3mcore's router is lightweight (CPU only)
 - Expert models on GPU via Ollama/vLLM
 - You can increase `MAX_LOADED_MODELS` if you have enough VRAM
 

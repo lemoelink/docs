@@ -2,12 +2,12 @@
 id: arquitectura
 title: System Architecture
 sidebar_position: 1
-description: Overview of the internal architecture of LEMoE and its routing flow.
+description: Overview of the internal architecture of l3mcore and its routing flow.
 ---
 
 # System Architecture
 
-LEMoE is designed as a modular middleware system. It sits between client applications and the actual AI models.
+l3mcore is designed as a modular middleware system. It sits between client applications and the actual AI models.
 
 ## High-Level Flow
 
@@ -29,7 +29,7 @@ sequenceDiagram
     Dispatcher-->>Client: Transmits tokens to client
 ```
 
-1. **Client Request**: HTTP to the LEMoE API server
+1. **Client Request**: HTTP to the l3mcore API server
 2. **Security and Validation**: size validation, rate limit, sanitization
 3. **Routing**: the Router analyzes the prompt and determines the expert
 4. **Dispatch**: the Expert Dispatcher forwards to the correct backend

@@ -2,12 +2,12 @@
 id: endpoints
 title: API Endpoints
 sidebar_position: 1
-description: Complete reference of LEMoE's HTTP endpoints, compatible with OpenAI and Ollama.
+description: Complete reference of l3mcore's HTTP endpoints, compatible with OpenAI and Ollama.
 ---
 
 # API Endpoints
 
-LEMoE listens on `http://0.0.0.0:11435` by default and exposes endpoints compatible with the OpenAI and Ollama APIs.
+l3mcore listens on `http://0.0.0.0:11435` by default and exposes endpoints compatible with the OpenAI and Ollama APIs.
 
 ---
 
@@ -31,7 +31,7 @@ Generates a chat response. Compatible with any OpenAI client.
 ```
 
 :::info Optional `model` field
-- **Omitted or generic** (e.g. `"gpt-4"`): LEMoE analyzes the prompt and automatically routes to the best expert.
+- **Omitted or generic** (e.g. `"gpt-4"`): l3mcore analyzes the prompt and automatically routes to the best expert.
 - **Specific label** (e.g. `"programmer"`): skips the router and goes straight to the indicated expert.
 :::
 

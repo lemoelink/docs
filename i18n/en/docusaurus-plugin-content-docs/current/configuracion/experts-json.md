@@ -2,7 +2,7 @@
 id: experts-json
 title: experts.json — Experts
 sidebar_position: 2
-description: Complete reference of experts.json to define specialist models in LEMoE.
+description: Complete reference of experts.json to define specialist models in l3mcore.
 ---
 
 # `experts.json` — Expert Definition

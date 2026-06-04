@@ -9,7 +9,7 @@ description: Enrutamiento en cascada con memoria de conversacion y auto-recupera
 
 ## Enrutamiento Contextual en Cascada
 
-LEMoE evalua el contexto de la conversacion para mantener la continuidad tematica en chats de varios turnos. Este sistema es 100% sin estado (stateless): no requiere base de datos, ni sesiones, ni uso de RAM por usuario.
+l3mcore evalua el contexto de la conversacion para mantener la continuidad tematica en chats de varios turnos. Este sistema es 100% sin estado (stateless): no requiere base de datos, ni sesiones, ni uso de RAM por usuario.
 
 Funciona con cualquier numero de usuarios simultaneos porque cada peticion lleva su propio contexto a traves del array estandar `messages` de OpenAI. OpenWebUI, Continue.dev y cualquier otro cliente compatible ya envian el historial completo de la conversacion en cada peticion.
 

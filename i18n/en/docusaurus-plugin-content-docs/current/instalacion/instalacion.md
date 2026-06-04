@@ -2,7 +2,7 @@
 id: instalacion
 title: Installation
 sidebar_position: 2
-description: How to install LEMoE step by step.
+description: How to install l3mcore step by step.
 ---
 
 # Installation
@@ -10,7 +10,7 @@ description: How to install LEMoE step by step.
 ## Automatic method (recommended)
 
 ```bash
-git clone https://github.com/lemoelink/lemoe.git
+git clone https://github.com/lemoelink/l3mcore.git
 cd lemoe
 chmod +x setup.sh
 ./setup.sh
@@ -25,7 +25,7 @@ The interactive script will ask you:
 
 ```bash
 # 1. Clone
-git clone https://github.com/lemoelink/lemoe.git
+git clone https://github.com/lemoelink/l3mcore.git
 cd lemoe
 
 # 2. Create virtual environment
