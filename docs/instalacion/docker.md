@@ -28,6 +28,11 @@ Tenemos tres imágenes oficiales disponibles en [Docker Hub (lemoelink/l3mcore)]
 - **Base:** Nvidia CUDA Runtime
 - **Descripción:** Utiliza esta versión únicamente si vas a cargar modelos locales pesados (como Llama 3) directamente en l3mcore y tienes una tarjeta gráfica Nvidia. Requiere pasar el parámetro `--gpus all` a Docker.
 
+### ·. ROCM (Beta)
+- **Tag**: `lemoelink/l3mcore:rocm`
+- **Base**: Debian Estándar
+- **Descripcion**: Utiliza esta versión únicamente si vas a cargar modelos locales pesados (como Llama 3) directamente en l3mcore y tienes una tarjeta gráfica AMD. Requiere pasar el parámetro `--gpus all` a Docker.
+
 ---
 
 ## Cómo Ejecutar l3mcore
@@ -85,7 +90,7 @@ Cuando salga una nueva versión de l3mcore, actualizar tu nodo es tan sencillo c
 
 ```bash
 docker pull lemoelink/l3mcore:general
-docker stop lemoe
-docker rm lemoe
+docker stop l3mcore
+docker rm l3mcore
 # Y vuelves a ejecutar el comando "docker run" de arriba
 ```

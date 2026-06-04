@@ -4,7 +4,6 @@ title: Clúster Proxy
 sidebar_position: 3
 description: Cómo usar l3mcore para unificar múltiples servidores GPU, instancias Ollama y APIs cloud.
 ---
-
 # Clúster Proxy
 
 l3mcore puede actuar como un **punto de entrada unificado** para una infraestructura heterogénea de backends de IA.
@@ -67,7 +66,7 @@ l3mcore puede actuar como un **punto de entrada unificado** para una infraestruc
 
 ## Beneficios del clúster
 
-- **Un solo endpoint** para todas tus aplicaciones: `http://lemoe-host:11435`
+- **Un solo endpoint** para todas tus aplicaciones: `http://l3mcore-host:11435`
 - **Enrutamiento automático**: el prompt decide a qué servidor va
 - **Alta disponibilidad**: si un backend falla, el fallback entra en juego
 - **Mezcla cloud + local**: usa cloud solo para lo que lo necesitas, ahorra costes

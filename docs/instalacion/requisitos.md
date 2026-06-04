@@ -43,8 +43,8 @@ onnxruntime             # para modelos locales ONNX (opcional)
 
 | Sistema Operativo | Estado |
 |---|---|
-| Linux (Ubuntu 20.04+, Debian, Arch) | Soportado |
+| Linux (Testeado en Fedora y Debian) | Soportado |
 | macOS (12+) | Soportado |
 | Windows (WSL2) | Soportado via WSL2 |
-| Windows nativo | No testado |
+| Windows nativo | No Soportado |
 | Raspberry Pi OS | Soportado |

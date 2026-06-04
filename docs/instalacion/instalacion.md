@@ -11,7 +11,7 @@ description: Cómo instalar l3mcore paso a paso.
 
 ```bash
 git clone https://github.com/lemoelink/l3mcore.git
-cd lemoe
+cd l3mcore
 chmod +x setup.sh
 ./setup.sh
 ```
@@ -26,7 +26,7 @@ El script interactivo te preguntará:
 ```bash
 # 1. Clonar
 git clone https://github.com/lemoelink/l3mcore.git
-cd lemoe
+cd l3mcore
 
 # 2. Crear entorno virtual
 python3 -m venv venv
@@ -47,7 +47,7 @@ cp config/experts.example.json config/experts.json
 ## Estructura del proyecto
 
 ```
-lemoe/
+l3mcore/
 ├── config/
 │   ├── config.json        # Configuración del router
 │   └── experts.json       # Definición de expertos

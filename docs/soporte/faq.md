@@ -10,7 +10,7 @@ description: Preguntas frecuentes sobre l3mcore.
 ## General
 
 ### ¿l3mcore es gratuito?
-Sí, l3mcore es open source. Los costes vienen de los backends que configures (ej. API de OpenAI) o del hardware para modelos locales.
+Sí, l3mcore es open source y gratuito para uso no comercial. Los costes vienen de los backends que configures (ej. API de OpenAI) o del hardware para modelos locales.
 
 ### ¿Necesito GPU para usar l3mcore?
 No. El router ML de l3mcore corre en CPU. Los backends que uses (Ollama, vLLM) pueden o no necesitar GPU según los modelos que elijas.
