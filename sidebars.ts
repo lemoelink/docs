@@ -77,13 +77,6 @@ const sidebars: SidebarsConfig = {
         'soporte/faq',
       ],
     },
-    {
-      type: 'category',
-      label: 'Extras',
-      items: [
-        'extras/roadmap',
-      ],
-    },
   ],
 };
 
