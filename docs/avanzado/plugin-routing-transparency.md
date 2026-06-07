@@ -13,7 +13,7 @@ Parece algo menor, pero en la práctica transforma la experiencia de uso: el usu
 
 ```
 ---
-🧠 Routed to: **programador** (confidence: 87%)
+ Routed to: **programador** (confidence: 87%)
 ```
 
 ---
@@ -43,7 +43,7 @@ El experto genera la respuesta
 Plugin hook: after_generation(response, expert_label)
         │
         ├── Añade footer al final del texto
-        │   "--- 🧠 Routed to: **programador** (confidence: 87%)"
+        │   "---  Routed to: **programador** (confidence: 87%)"
         │
         v
 La respuesta final llega al cliente con el footer incluido
@@ -79,7 +79,7 @@ Toda la configuración vive en `config/config.json` bajo la clave `routing_trans
     "show_score":  true,
     "show_method": false,
     "separator":   "---",
-    "label":       "🧠 Routed to"
+    "label":       " Routed to"
   }
 }
 ```
@@ -90,7 +90,7 @@ Toda la configuración vive en `config/config.json` bajo la clave `routing_trans
 | `show_score` | `true` | Muestra el porcentaje de confianza junto al nombre del experto. |
 | `show_method` | `false` | Reservado para uso futuro. Mostrará si la decisión fue por embedding o por keyword fallback. |
 | `separator` | `"---"` | Línea separadora antes del footer. Máximo 80 caracteres. |
-| `label` | `"🧠 Routed to"` | Texto que precede al nombre del experto. Máximo 60 caracteres. |
+| `label` | `" Routed to"` | Texto que precede al nombre del experto. Máximo 60 caracteres. |
 
 ### Desactivar en producción
 
