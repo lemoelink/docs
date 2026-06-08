@@ -60,7 +60,10 @@ docker run -d -p 11435:11435 \
 
 ## Despliegue con Docker Compose
 
-Si prefieres gestionar tus contenedores de forma declarativa, puedes crear un archivo `docker-compose.yml` con el siguiente contenido:
+Si prefieres gestionar tus contenedores de forma declarativa, puedes crear un archivo `docker-compose.yml`. Hemos preparado varias plantillas ("Stacks") para que elijas la que mejor se adapte a tus necesidades. Todos los directorios se mapean automáticamente de forma local.
+
+### 1. Stack Básico: Solo l3mcore
+Ideal si ya tienes Ollama u otras APIs instaladas en otro servidor.
 
 ```yaml
 version: '3.8'
@@ -72,13 +75,118 @@ services:
     ports:
       - "11435:11435"
     volumes:
-      - ./config:/app/config
-      - ./models:/app/models
-      - ./data:/app/data
+      - ./lemoe_config:/app/config
+      - ./lemoe_models:/app/models
+      - ./lemoe_data:/app/data
     restart: unless-stopped
 ```
 
-Para iniciarlo, simplemente ejecuta:
+### 2. Stack Local: l3mcore + Ollama
+Despliega l3mcore junto con un servidor de Ollama local. Todo lo que descargues en Ollama será gestionado por l3mcore.
+
+```yaml
+version: '3.8'
+
+services:
+  lemoe:
+    image: lemoelink/l3mcore:general
+    container_name: lemoe
+    ports:
+      - "11435:11435"
+    volumes:
+      - ./lemoe_config:/app/config
+      - ./lemoe_models:/app/models
+      - ./lemoe_data:/app/data
+    restart: unless-stopped
+    depends_on:
+      - ollama
+      
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama_data:/root/.ollama
+    restart: unless-stopped
+```
+
+### 3. Stack Frontend: l3mcore + Open WebUI
+Si usas APIs de pago (como OpenAI o Anthropic) y quieres un chat visual que envíe las peticiones a través del enrutador de l3mcore.
+
+```yaml
+version: '3.8'
+
+services:
+  lemoe:
+    image: lemoelink/l3mcore:general
+    container_name: lemoe
+    ports:
+      - "11435:11435"
+    volumes:
+      - ./lemoe_config:/app/config
+      - ./lemoe_models:/app/models
+      - ./lemoe_data:/app/data
+    restart: unless-stopped
+    
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "3000:8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://lemoe:11435/v1
+    volumes:
+      - ./webui_data:/app/backend/data
+    restart: unless-stopped
+    depends_on:
+      - lemoe
+```
+
+### 4. Stack Completo: l3mcore + Ollama + Open WebUI
+El entorno definitivo. Tienes los modelos locales (Ollama), el enrutador inteligente (l3mcore) y la interfaz gráfica de chat (Open WebUI), todo conectado entre sí automáticamente.
+
+```yaml
+version: '3.8'
+
+services:
+  lemoe:
+    image: lemoelink/l3mcore:general
+    container_name: lemoe
+    ports:
+      - "11435:11435"
+    volumes:
+      - ./lemoe_config:/app/config
+      - ./lemoe_models:/app/models
+      - ./lemoe_data:/app/data
+    restart: unless-stopped
+    depends_on:
+      - ollama
+      
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama_data:/root/.ollama
+    restart: unless-stopped
+    
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "3000:8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://lemoe:11435/v1
+    volumes:
+      - ./webui_data:/app/backend/data
+    restart: unless-stopped
+    depends_on:
+      - lemoe
+```
+
+Para iniciar cualquiera de estos stacks, guarda el código en un archivo llamado `docker-compose.yml` en una carpeta vacía y ejecuta:
 
 ```bash
 docker compose up -d
