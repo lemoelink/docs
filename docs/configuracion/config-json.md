@@ -20,7 +20,7 @@ Para facilitar la creación de tus archivos de configuración, puedes utilizar e
     "router": {
         "mode": "generic",
         "router_type": "embedding",
-        "model_path": "intfloat/multilingual-e5-small",
+        "model_path": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
         "categories_file": "config/experts.json",
         "confidence_threshold": 0.4,
         "keyword_fallback": true,
@@ -31,17 +31,22 @@ Para facilitar la creación de tus archivos de configuración, puedes utilizar e
             "mean_keyword": 0.20,
             "top3_vote":    0.10
         }
+    },
+    "expert_runner": {
+        "failure_webhook_url": "http://127.0.0.1:5000/webhook"
     }
 }
 ```
 
 ## Referencia de parámetros
 
+### Parámetros de Enrutamiento (`router`)
+
 | Parámetro | Tipo | Por defecto | Descripción |
 |---|---|---|---|
 | `mode` | string | `"generic"` | `"generic"` usa `experts.json`. `"model"` usa un clasificador propio. |
 | `router_type` | string | `"embedding"` | `"embedding"` para búsqueda semántica vectorial (recomendado). `"classification"` para modelo BERT fine-tuned. |
-| `model_path` | string | `"intfloat/multilingual-e5-small"` | Repo HuggingFace o ruta local. Vacío `""` para deshabilitar ML y usar solo keywords. |
+| `model_path` | string | `"sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"` | Repo HuggingFace o ruta local. Vacío `""` para deshabilitar ML y usar solo keywords. |
 | `categories_file` | string | `"config/experts.json"` | Ruta al archivo de expertos. Debe estar dentro del proyecto (seguridad). |
 | `confidence_threshold` | float | `0.4` | Probabilidad mínima para seleccionar un experto. Si nadie la alcanza, se usan fallbacks. |
 | `keyword_fallback` | bool | `true` | Activa matching difuso si el ML falla o queda por debajo del umbral. |
@@ -49,6 +54,12 @@ Para facilitar la creación de tus archivos de configuración, puedes utilizar e
 | `scoring_weights` | object | ver abajo | Pesos de la formula hibrida de puntuacion. |
 | `context_messages` | int | `3` | Numero de mensajes recientes del usuario a concatenar para el enrutamiento en cascada cuando el ultimo mensaje tiene baja confianza. |
 | `context_max_chars` | int | `1600` | Maximo de caracteres para el texto de contexto concatenado, para respetar la ventana de tokens del modelo de embeddings. |
+
+### Parámetros de Ejecución de Expertos (`expert_runner`)
+
+| Parámetro | Tipo | Por defecto | Descripción |
+|---|---|---|---|
+| `failure_webhook_url` | string | `""` | URL HTTP a la que enviar una notificación POST cuando un experto falla y se activa el fallback (ej. `{"event": "expert_failure", "expert": "nombre", "reason": "motivo"}`). Dejar en blanco para desactivar. |
 
 ## Ajuste de pesos (`scoring_weights`)
 

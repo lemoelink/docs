@@ -26,7 +26,8 @@ El archivo `config/experts.json` define la lista de modelos especialistas dispon
       ],
       "type": "ollama",
       "url": "http://127.0.0.1:11434",
-      "model_name": "qwen2.5:7b"
+      "model_name": "qwen2.5:7b",
+      "system_prompt": "Eres un programador experto. Responde solo con código limpio y explicaciones breves."
     }
   ]
 }
@@ -41,11 +42,12 @@ El archivo `config/experts.json` define la lista de modelos especialistas dispon
 | `description` | Sí | Frase en lenguaje natural que describe qué maneja el experto. Se vectoriza y aporta el 30% al score. |
 | `keywords` | Sí | Lista de términos que el usuario podría escribir. **Mínimo 15.** |
 | `type` | Sí | Backend: `"ollama"`, `"api"` o `"local"`. Ver [Modelos](/configuracion/modelos). |
+| `system_prompt` | No | System prompt de sistema personalizado para inyectar al principio de la conversación antes de la inferencia (máximo 4000 caracteres). |
 
 ## Reglas críticas para keywords
 
-:::danger Mínimo 15 keywords por experto
-El sistema de puntuación multi-vector necesita suficiente cobertura. Con menos de 15 keywords obtendrás enrutamiento impreciso.
+:::tip Enriquecimiento Automático
+El sistema de puntuación multi-vector necesita suficiente cobertura. Aunque se recomienda proporcionar palabras clave descriptivas, l3mcore incluye un **optimizador semántico autónomo** en segundo plano. Al arrancar, un hilo secundario generará automáticamente 20 sinónimos y variaciones adicionales de consultas para cada experto y los guardará en un caché local (`config/.experts_enriched_cache.json`), garantizando la precisión del enrutador semántico incluso con pocas palabras clave básicas.
 :::
 
 1. **Términos concretos, no categorías abstractas**

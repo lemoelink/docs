@@ -26,7 +26,8 @@ The `config/experts.json` file defines the list of specialist models available t
       ],
       "type": "ollama",
       "url": "http://127.0.0.1:11434",
-      "model_name": "qwen2.5:7b"
+      "model_name": "qwen2.5:7b",
+      "system_prompt": "You are an expert programmer. Respond only with clean code and brief explanations."
     }
   ]
 }
@@ -41,11 +42,12 @@ The `config/experts.json` file defines the list of specialist models available t
 | `description` | Yes | Natural language sentence describing what the expert handles. It is vectorized and contributes 30% to the score. |
 | `keywords` | Yes | List of terms the user might type. **Minimum 15.** |
 | `type` | Yes | Backend: `"ollama"`, `"api"` or `"local"`. See [Models](/configuracion/modelos). |
+| `system_prompt` | No | Custom system prompt to prepend at the beginning of the conversation history before inference (maximum 4000 characters). |
 
 ## Critical rules for keywords
 
-:::danger Minimum 15 keywords per expert
-The multi-vector scoring system needs enough coverage. With fewer than 15 keywords you will get inaccurate routing.
+:::tip Automatic Enrichment
+The multi-vector scoring system needs enough coverage. While defining descriptive keywords is recommended, l3mcore now includes a **background semantic optimizer**. On startup, a background thread automatically generates 20 additional synonyms and query patterns for each expert and saves them to a local cache file (`config/.experts_enriched_cache.json`), ensuring high semantic routing accuracy even if you define only a few basic keywords.
 :::
 
 1. **Concrete terms, not abstract categories**

@@ -29,7 +29,7 @@ The limit is set by `max_experts` in `experts.json` (default 15). Technically, y
 Currently no. Experts are loaded on startup. You must restart l3mcore for changes in `experts.json` to take effect.
 
 ### Can I change the router model?
-Yes. You can change the embeddings model by modifying the `model_path` parameter in `config/config.json`. By default it uses `intfloat/multilingual-e5-small`. You can point to any other model compatible with Hugging Face SentenceTransformers, to a local disk path, or leave it empty `""` to disable ML routing and use only keywords (which reduces the router's RAM/CPU consumption to zero).
+Yes. You can change the embeddings model by modifying the `model_path` parameter in `config/config.json`. By default it uses `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`. You can point to any other model compatible with Hugging Face SentenceTransformers, to a local disk path, or leave it empty `""` to disable ML routing and use only keywords (which reduces the router's RAM/CPU consumption to zero).
 
 ### How do I know if the router is working well?
 Check the logs: `tail -f logs/app.log | grep Router`. You should see scores > 0.6 for clear prompts.
@@ -52,7 +52,7 @@ Yes. Use the Langchain/LlamaIndex OpenAI client pointing to `http://your-ip:1143
 ## Performance
 
 ### How long does the router take to decide?
-With `multilingual-e5-small`: ~10-20ms. With keywords only: < 1ms. The expert model's inference time dominates the total time.
+With `paraphrase-multilingual-MiniLM-L12-v2`: ~10-20ms. With keywords only: < 1ms. The expert model's inference time dominates the total time.
 
 ### What happens if an external backend (OpenAI) fails?
 The Expert Dispatcher returns an HTTP 502/503 error to the client. There are no automatic retries currently. You can implement retry logic in an `after_generation` plugin.

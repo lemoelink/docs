@@ -111,6 +111,45 @@ Returns the server version:
 
 ---
 
+## Utilities and Auto-Discovery
+
+### `GET /v1/discover`
+
+Automatically scans for installed models in your local or remote Ollama instance that have not yet been configured as experts in l3mcore. It simplifies system expansion by generating ready-to-paste JSON snippets for your `experts.json` file.
+
+**Query Parameters:**
+
+- `url` (optional): The Ollama API URL to query. Defaults to `http://127.0.0.1:11434`.
+
+**Response:**
+
+```json
+{
+  "ollama_url": "http://127.0.0.1:11434",
+  "configured_experts": [
+    "programmer",
+    "sysadmin",
+    "fallback"
+  ],
+  "unconfigured_models": [
+    {
+      "model_name": "gemma2:2b",
+      "suggested_label": "gemma2_2b",
+      "snippet": {
+        "label": "gemma2_2b",
+        "description": "Expert using gemma2:2b. Add keywords and a description.",
+        "keywords": [],
+        "type": "ollama",
+        "url": "http://127.0.0.1:11434",
+        "model_name": "gemma2:2b"
+      }
+    }
+  ]
+}
+```
+
+---
+
 ## Server Limits
 
 | Limit | Value |

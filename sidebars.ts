@@ -62,6 +62,7 @@ const sidebars: SidebarsConfig = {
             'avanzado/plugin-system-time',
             'avanzado/plugin-user-profile',
             'avanzado/plugin-routing-transparency',
+            'avanzado/plugin-telemetry-dashboard',
           ],
         },
         'avanzado/route-endpoint',

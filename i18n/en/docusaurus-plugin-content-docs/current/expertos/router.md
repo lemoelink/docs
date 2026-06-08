@@ -55,10 +55,10 @@ A single average vector of all keywords loses information:
 
 | Model | Size | Languages | Notes |
 |---|---|---|---|
-| `intfloat/multilingual-e5-small` | ~120 MB | 100+ | **Default.** Balanced. |
-| `intfloat/multilingual-e5-base` | ~280 MB | 100+ | Higher accuracy, more RAM |
-| `BAAI/bge-small-en-v1.5` | ~130 MB | English | Excellent if you only use English |
-| `nomic-ai/nomic-embed-text-v1` | ~550 MB | English | High quality, heavier |
+| `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` | ~220 MB | 50+ | **Default.** Very fast and excellent multilingual support. |
+| `intfloat/multilingual-e5-small` | ~120 MB | 100+ | Lightweight and balanced. |
+| `intfloat/multilingual-e5-base` | ~280 MB | 100+ | Higher accuracy, more RAM. |
+| `BAAI/bge-small-en-v1.5` | ~130 MB | English | Excellent if you only use English. |
 
 Changing the model only requires updating `model_path` in `config.json`.
 
@@ -86,3 +86,12 @@ The classification model directly predicts the expert label. It is faster in inf
 ```
 
 Disables the ML router completely and uses only keyword matching with fuzzy matching. Useful for Raspberry Pi or very limited hardware.
+
+## Autonomous Semantic Keyword Enrichment
+
+To prevent you from having to manually define massive lists of keywords or train complex classifiers, l3mcore includes an **autonomous semantic optimizer**:
+
+1. On startup or reload of the experts, a background thread analyzes your categories.
+2. If you have any active LLM model (local, Ollama, or API-based), the system transparently asks it to generate **20 synonyms, variations, and query patterns** in both English and Spanish for each expert based on its name, description, and existing keywords.
+3. The system stores these synonyms in a local cache file (`config/.experts_enriched_cache.json`) to guarantee instant startups on subsequent restarts.
+4. The router hot-recomputes the semantic vectors incorporating these enriched synonyms, drastically improving the accuracy of the semantic router with zero effort from the user.

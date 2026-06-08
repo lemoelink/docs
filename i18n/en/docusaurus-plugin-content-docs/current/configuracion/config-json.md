@@ -20,7 +20,7 @@ To make creating your configuration files easier, you can use the [l3mcore Onlin
     "router": {
         "mode": "generic",
         "router_type": "embedding",
-        "model_path": "intfloat/multilingual-e5-small",
+        "model_path": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
         "categories_file": "config/experts.json",
         "confidence_threshold": 0.4,
         "keyword_fallback": true,
@@ -31,17 +31,22 @@ To make creating your configuration files easier, you can use the [l3mcore Onlin
             "mean_keyword": 0.20,
             "top3_vote":    0.10
         }
+    },
+    "expert_runner": {
+        "failure_webhook_url": "http://127.0.0.1:5000/webhook"
     }
 }
 ```
 
 ## Parameter Reference
 
+### Routing Parameters (`router`)
+
 | Parameter | Type | Default | Description |
 |---|---|---|---|
 | `mode` | string | `"generic"` | `"generic"` uses `experts.json`. `"model"` uses a custom classifier. |
 | `router_type` | string | `"embedding"` | `"embedding"` for vector semantic search (recommended). `"classification"` for fine-tuned BERT model. |
-| `model_path` | string | `"intfloat/multilingual-e5-small"` | HuggingFace repo or local path. Empty `""` to disable ML and use only keywords. |
+| `model_path` | string | `"sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"` | HuggingFace repo or local path. Empty `""` to disable ML and use only keywords. |
 | `categories_file` | string | `"config/experts.json"` | Path to the experts file. Must be inside the project (security). |
 | `confidence_threshold` | float | `0.4` | Minimum probability to select an expert. If no one reaches it, fallbacks are used. |
 | `keyword_fallback` | bool | `true` | Activates fuzzy matching if ML fails or falls below the threshold. |
@@ -49,6 +54,12 @@ To make creating your configuration files easier, you can use the [l3mcore Onlin
 | `scoring_weights` | object | see below | Weights of the hybrid scoring formula. |
 | `context_messages` | int | `3` | Number of recent user messages to concatenate for cascade routing when the last message has low confidence. |
 | `context_max_chars` | int | `1600` | Maximum characters for the concatenated context text, to respect the token window of the embedding model. |
+
+### Expert Runner Parameters (`expert_runner`)
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `failure_webhook_url` | string | `""` | HTTP URL to send a POST notification to when an expert fails and fallback is triggered (e.g. `{"event": "expert_failure", "expert": "label", "reason": "reason"}`). Leave blank to disable. |
 
 ## Weight Tuning (`scoring_weights`)
 

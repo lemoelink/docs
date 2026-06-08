@@ -29,7 +29,7 @@ El límite está en `max_experts` en `experts.json` (por defecto 15). Técnicame
 Actualmente no. Los expertos se cargan al arranque. Debes reiniciar l3mcore para que los cambios en `experts.json` surtan efecto.
 
 ### ¿Puedo cambiar el modelo del router?
-Sí. Puedes cambiar el modelo de embeddings modificando el parámetro `model_path` en `config/config.json`. Por defecto usa `intfloat/multilingual-e5-small`. Puedes apuntar a cualquier otro modelo compatible con SentenceTransformers de Hugging Face, a una ruta local en disco, o dejarlo vacío `""` para desactivar el enrutamiento ML y usar únicamente keywords (lo cual reduce a cero el consumo de RAM/CPU del router).
+Sí. Puedes cambiar el modelo de embeddings modificando el parámetro `model_path` en `config/config.json`. Por defecto usa `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`. Puedes apuntar a cualquier otro modelo compatible con SentenceTransformers de Hugging Face, a una ruta local en disco, o dejarlo vacío `""` para desactivar el enrutamiento ML y usar únicamente keywords (lo cual reduce a cero el consumo de RAM/CPU del router).
 
 ### ¿Cómo sé si el router está funcionando bien?
 Revisa los logs: `tail -f logs/app.log | grep Router`. Deberías ver scores > 0.6 para prompts claros.
@@ -52,7 +52,7 @@ Sí. Usa el cliente OpenAI de Langchain/LlamaIndex apuntando a `http://tu-ip:114
 ## Rendimiento
 
 ### ¿Cuánto tarda el router en decidir?
-Con `multilingual-e5-small`: ~10-20ms. Con solo keywords: < 1ms. El tiempo de inferencia del modelo experto domina el tiempo total.
+Con `paraphrase-multilingual-MiniLM-L12-v2`: ~10-20ms. Con solo keywords: < 1ms. El tiempo de inferencia del modelo experto domina el tiempo total.
 
 ### ¿Qué pasa si un backend externo (OpenAI) falla?
 El Expert Dispatcher devuelve un error HTTP 502/503 al cliente. No hay reintentos automáticos actualmente. Puedes implementar retry logic en un plugin `after_generation`.

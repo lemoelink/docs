@@ -7,7 +7,28 @@ description: Cómo instalar l3mcore paso a paso.
 
 # Instalación
 
-## Método automático (recomendado)
+## Método automático (one-liner)
+
+El método más rápido y recomendado es ejecutar nuestro instalador automatizado. Esto descargará el repositorio, comprobará dependencias, creará el entorno virtual y configurará todo el proyecto en un solo paso:
+
+**Usando wget:**
+```bash
+wget -qO- https://raw.githubusercontent.com/lemoelink/LeMoE/master/setup.sh | bash
+```
+
+**Usando curl:**
+```bash
+curl -sSL https://raw.githubusercontent.com/lemoelink/LeMoE/master/setup.sh | bash
+```
+
+El script interactivo te preguntará:
+- Si quieres instalar Ollama automáticamente
+- Si quieres habilitar el enrutador semántico (recomendado)
+- Si quieres habilitar el sistema de plugins y descargar el modelo genérico de fallback
+
+## Método de clonado clásico
+
+Si prefieres descargar el repositorio tú mismo y ejecutar el script localmente:
 
 ```bash
 git clone https://github.com/lemoelink/l3mcore.git
@@ -15,11 +36,6 @@ cd l3mcore
 chmod +x setup.sh
 ./setup.sh
 ```
-
-El script interactivo te preguntará:
-- Si quieres instalar dependencias ML (SentenceTransformers, PyTorch)
-- Si quieres habilitar el sistema de plugins
-- Si quieres instalar soporte para modelos ONNX locales
 
 ## Método manual
 

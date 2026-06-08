@@ -46,7 +46,7 @@ tail -f logs/app.log
 
 ```
 [INFO] l3mcore API Server starting...
-[INFO] GenericRouter initialized with embedding model: intfloat/multilingual-e5-small
+[INFO] GenericRouter initialized with embedding model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
 [INFO] Loaded 3 experts from config/experts.json
 [INFO] Expert 'programmer' → ollama @ http://127.0.0.1:11434
 [INFO] Expert 'writer' → api (openai/gpt-4o)

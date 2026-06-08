@@ -55,10 +55,10 @@ Un solo vector promedio de todas las keywords pierde información:
 
 | Modelo | Tamaño | Idiomas | Notas |
 |---|---|---|---|
-| `intfloat/multilingual-e5-small` | ~120 MB | 100+ | **Por defecto.** Equilibrado. |
-| `intfloat/multilingual-e5-base` | ~280 MB | 100+ | Mayor precisión, más RAM |
-| `BAAI/bge-small-en-v1.5` | ~130 MB | Inglés | Excelente si solo usas inglés |
-| `nomic-ai/nomic-embed-text-v1` | ~550 MB | Inglés | Alta calidad, más pesado |
+| `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` | ~220 MB | 50+ | **Por defecto.** Muy rápido y excelente soporte multilingüe. |
+| `intfloat/multilingual-e5-small` | ~120 MB | 100+ | Ligero y equilibrado. |
+| `intfloat/multilingual-e5-base` | ~280 MB | 100+ | Mayor precisión, más RAM. |
+| `BAAI/bge-small-en-v1.5` | ~130 MB | Inglés | Excelente si solo usas inglés. |
 
 Cambiar el modelo solo requiere actualizar `model_path` en `config.json`.
 
@@ -86,3 +86,12 @@ El modelo de clasificación predice directamente la etiqueta del experto. Es má
 ```
 
 Deshabilita el router ML completamente y usa solo coincidencia de keywords con fuzzy matching. Útil para Raspberry Pi o hardware muy limitado.
+
+## Enriquecimiento Semántico Autónomo de Palabras Clave
+
+Para evitar que tengas que definir manualmente listas masivas de palabras clave o entrenar clasificadores complejos, l3mcore incluye un **optimizador semántico autónomo**:
+
+1. Al arrancar o recargar los expertos, un hilo en segundo plano analiza tus categorías.
+2. Si tienes algún modelo LLM activo (en local, Ollama o por API), el sistema le pide de forma transparente que genere **20 sinónimos, variantes y patrones de consulta** en inglés y español para cada experto basándose en su nombre, descripción y palabras clave existentes.
+3. El sistema almacena estos sinónimos en un caché local (`config/.experts_enriched_cache.json`) para garantizar arranques instantáneos en los siguientes reinicios.
+4. El enrutador recalcula en caliente los vectores semánticos incorporando estos sinónimos enriquecidos, mejorando drásticamente la tasa de acierto del router semántico con cero esfuerzo por parte del usuario.
