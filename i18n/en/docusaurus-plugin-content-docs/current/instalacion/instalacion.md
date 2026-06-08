@@ -13,12 +13,12 @@ The fastest and recommended method is to run our automated installer. This will 
 
 **Using wget:**
 ```bash
-wget -qO- https://raw.githubusercontent.com/lemoelink/LeMoE/master/setup.sh | bash
+wget -qO- https://raw.githubusercontent.com/lemoelink/l3mcore/refs/heads/master/setup.sh | bash
 ```
 
 **Using curl:**
 ```bash
-curl -sSL https://raw.githubusercontent.com/lemoelink/LeMoE/master/setup.sh | bash
+curl -sSL https://raw.githubusercontent.com/lemoelink/l3mcore/refs/heads/master/setup.sh | bash
 ```
 
 The interactive script will ask you:

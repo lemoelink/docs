@@ -26,8 +26,21 @@ Do you prefer to create your configuration visually? Use the [l3mcore Online Con
 
 ## 3-step Installation
 
-### 1. Clone and prepare
+### 1. Download and install
 
+The fastest method is using our automated installer:
+
+**Using wget:**
+```bash
+wget -qO- https://raw.githubusercontent.com/lemoelink/l3mcore/refs/heads/master/setup.sh | bash
+```
+
+**Using curl:**
+```bash
+curl -sSL https://raw.githubusercontent.com/lemoelink/l3mcore/refs/heads/master/setup.sh | bash
+```
+
+*(Optional) If you prefer to clone the repository manually:*
 ```bash
 git clone https://github.com/lemoelink/l3mcore.git
 cd lemoe
@@ -35,7 +48,7 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-The `setup.sh` script creates the virtual environment, installs dependencies and generates the default configuration files.
+The installer creates the virtual environment, installs dependencies and generates the default configuration files.
 
 ### 2. Configure your first expert
 

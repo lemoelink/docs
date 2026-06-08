@@ -26,8 +26,21 @@ l3mcore actúa como un proxy compatible con la API de OpenAI y Ollama. No necesi
 
 ## Instalación en 3 pasos
 
-### 1. Clonar y preparar
+### 1. Descargar e instalar
 
+El método más rápido es usar nuestro instalador automático:
+
+**Usando wget:**
+```bash
+wget -qO- https://raw.githubusercontent.com/lemoelink/l3mcore/refs/heads/master/setup.sh | bash
+```
+
+**Usando curl:**
+```bash
+curl -sSL https://raw.githubusercontent.com/lemoelink/l3mcore/refs/heads/master/setup.sh | bash
+```
+
+*(Opcional) Si prefieres clonar el repositorio manualmente:*
 ```bash
 git clone https://github.com/lemoelink/l3mcore.git
 cd l3mcore
@@ -35,7 +48,7 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-El script `setup.sh` crea el entorno virtual, instala dependencias y genera los archivos de configuración por defecto.
+El instalador crea el entorno virtual, instala dependencias y genera los archivos de configuración por defecto.
 
 ### 2. Configurar tu primer experto
 
