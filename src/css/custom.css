@@ -71,8 +71,13 @@ body {
 /* ---- Navbar ---- */
 .navbar {
   border-bottom: 1px solid var(--ifm-border-color);
-  backdrop-filter: blur(12px);
   background: rgba(10, 10, 15, 0.92) !important;
+}
+
+@media (min-width: 997px) {
+  .navbar {
+    backdrop-filter: blur(12px);
+  }
 }
 
 .navbar__title {
