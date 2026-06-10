@@ -63,6 +63,7 @@ const sidebars: SidebarsConfig = {
             'avanzado/plugin-user-profile',
             'avanzado/plugin-routing-transparency',
             'avanzado/plugin-telemetry-dashboard',
+            'avanzado/plugin-paperless-search',
           ],
         },
         'avanzado/route-endpoint',

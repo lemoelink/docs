@@ -63,15 +63,32 @@ Ensure you have the `plugins/` folder enabled in the root of your l3mcore projec
 
 Copy the `paperless_search.py` file into the `plugins/` folder of your installation.
 
-### 3. Configure parameters in config.json
+### 3. Environment Variables Configuration (.env)
 
-Add the `paperless_search` section to your general configuration file `config/config.json`:
+To avoid exposing access credentials and tokens in your code or shared configuration files, the plugin preferentially reads credentials from environment variables. You can define them in your `.env` file at the root of the project:
+
+```env
+# Internal API URL that LeMoE will use to perform searches
+PAPERLESS_API_URL=http://localhost:8000
+
+# Public URL that the user's browser will use to open/download documents
+PAPERLESS_WEB_URL=http://localhost:8000
+
+# API Token generated in the Paperless administration panel
+PAPERLESS_API_TOKEN=your_secret_api_token_here
+```
+
+*Note: If you run LeMoE inside a Docker container and Paperless in another, the `PAPERLESS_API_URL` variable should point to the Paperless container (e.g. `http://paperless-webserver:8000`), while `PAPERLESS_WEB_URL` should point to the address accessible from your browser (e.g. `http://localhost:8000`).*
+
+### 4. Configure additional parameters in config.json
+
+Classification parameters and exclusion words are defined in the `config/config.json` file. If the environment variables above are not defined, the plugin will optionally attempt to read them from this file:
 
 ```json
 {
   "paperless_search": {
-    "paperless_url": "http://127.0.0.1:8000",
-    "paperless_token": "your_api_token_here",
+    "api_url": "http://localhost:8000",
+    "api_token": "your_api_token_here",
     "use_semantic_router": true,
     "similarity_threshold": 0.45,
     "max_results": 3,
@@ -80,7 +97,84 @@ Add the `paperless_search` section to your general configuration file `config/co
 }
 ```
 
-*Note: Remember to define the `document-expert` in your `config/experts.json` configuration using private internal keywords to avoid accidental access.*
+*Note: Remember to define the `document-expert` in your `config/experts.json` configuration using private internal keywords to avoid accidental access from the general router.*
+
+---
+
+## Docker Compose Deployment (Full Stack)
+
+If you want to deploy LeMoE, Ollama (for local LLM execution), and Paperless-ngx (with its database and local broker) together, you can use the following example `docker-compose.yml` file.
+
+Create a file named `docker-compose-paperless.yml` in the root of your l3mcore installation with the following content:
+
+```yaml
+version: '3.8'
+
+services:
+  l3mcore:
+    build:
+      context: .
+      dockerfile: private/docker/Dockerfile
+    container_name: l3mcore
+    ports:
+      - "11435:11435"
+    env_file:
+      - .env
+    volumes:
+      - ./config:/app/config
+      - ./plugins:/app/plugins
+      - ./logs:/app/logs
+    depends_on:
+      - ollama
+      - paperless-webserver
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  paperless-webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: paperless-webserver
+    restart: unless-stopped
+    depends_on:
+      - paperless-redis
+    ports:
+      - "8000:8000"
+    volumes:
+      - paperless_data:/usr/src/paperless/data
+      - paperless_media:/usr/src/paperless/media
+      - paperless_export:/usr/src/paperless/export
+      - paperless_consume:/usr/src/paperless/consume
+    environment:
+      - PAPERLESS_REDIS=redis://paperless-redis:6379
+      - PAPERLESS_URL=http://localhost:8000
+      - PAPERLESS_TIME_ZONE=Europe/Madrid
+      - PAPERLESS_OCR_LANGUAGE=spa
+
+  paperless-redis:
+    image: redis:7-alpine
+    container_name: paperless-redis
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  paperless_data:
+  paperless_media:
+  paperless_export:
+  paperless_consume:
+```
+
+To start deploying the entire local infrastructure, create your `.env` file with the credentials indicated in the previous section and run the command:
+
+```bash
+docker compose -f docker-compose-paperless.yml up -d
+```
 
 ---
 
