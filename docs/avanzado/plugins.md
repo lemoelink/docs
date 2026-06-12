@@ -11,7 +11,7 @@ l3mcore implementa una arquitectura de plugins basada en **Hooks** que permite e
 
 ## Cómo funciona
 
-Cualquier archivo `.py` en la carpeta `plugins/` se importa automáticamente al arrancar l3mcore.
+Cualquier archivo `.py` en la carpeta `plugins/` se importa automáticamente al arrancar l3mcore. Los Plugins son **interceptores de lado del servidor** (Server-Side) que pueden modificar la petición antes de que el LLM la vea, o modificar la respuesta antes de que llegue al usuario, sin depender de las capacidades de inferencia del propio LLM.
 
 ```
 lemoe/
@@ -49,6 +49,17 @@ Se ejecuta **después** de que el experto genera la respuesta, antes de enviarla
 def after_generation(response: str) -> str:
     # Tu lógica aquí
     return modified_response  # debe devolver string
+
+### `before_expert(messages: list, expert_config: dict) -> None`
+
+Se ejecuta **justo antes** de que se realice la llamada de inferencia al experto seleccionado, teniendo acceso a la lista completa de mensajes (historial) y al diccionario de configuracion del experto.
+
+**Usos**: Modificacion de mensajes especifica para ciertos backends (como `pii_masker`, que enmascara solo si el experto es de tipo `api` o remoto).
+
+```python
+def before_expert(messages: list, expert_config: dict) -> None:
+    # Tu logica aqui. Modifica la lista 'messages' en sitio
+    pass
 ```
 
 ## Ejemplo: Data Masking (PII)
@@ -134,3 +145,4 @@ Para instalar un plugin descarga el fichero `.py` correspondiente y copialo en l
 | [Plugin de Perfil de Usuario](./plugin-user-profile) | [user_profile.py](https://github.com/lemoelink/plugins/blob/main/user_profile.py) | `override_route` | Inyecta las preferencias, nombre e instrucciones personalizadas del usuario en el contexto inicial. |
 | [Transparencia de Enrutamiento](./plugin-routing-transparency) | [routing_transparency.py](https://github.com/lemoelink/plugins/blob/main/routing_transparency.py) | `after_generation` | Añade al final de cada respuesta qué experto la procesó y con qué nivel de confianza, haciendo el enrutamiento MoE visible para el usuario. |
 | [Telemetría y Dashboard](./plugin-telemetry-dashboard) | [telemetry_dashboard.py](https://github.com/lemoelink/plugins/blob/main/telemetry_dashboard.py) | `after_generation` | Habilita un panel web interactivo en tiempo real para visualizar peticiones, estimación de tokens, latencias promedio y costes estimados de APIs. |
+| [Mascara PII](./plugin-pii-masker) | [pii_masker.py](https://github.com/lemoelink/plugins/blob/main/pii_masker.py) | `before_expert` | Oculta informacion personal sensible (DNI, email, etc.) antes de enviarla a la nube. |

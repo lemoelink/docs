@@ -49,7 +49,18 @@ const sidebars: SidebarsConfig = {
       label: 'Avanzado',
       items: [
         'avanzado/open-webui',
-        'avanzado/enrutamiento-contextual',
+          'avanzado/enrutamiento-contextual',
+        {
+          type: 'category',
+          label: 'Sistema de Herramientas (Tools)',
+          link: {
+            type: 'doc',
+            id: 'avanzado/tools',
+          },
+          items: [
+            'avanzado/tool-calendar-smart',
+          ],
+        },
         {
           type: 'category',
           label: 'Sistema de Plugins',
@@ -62,8 +73,7 @@ const sidebars: SidebarsConfig = {
             'avanzado/plugin-system-time',
             'avanzado/plugin-user-profile',
             'avanzado/plugin-routing-transparency',
-            'avanzado/plugin-telemetry-dashboard',
-            'avanzado/plugin-paperless-search',
+            'avanzado/plugin-pii-masker',
           ],
         },
         'avanzado/route-endpoint',

@@ -24,3 +24,6 @@ yarn-error.log*
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# Private documentation
+private_business_docs/

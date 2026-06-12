@@ -105,3 +105,34 @@ La temperatura controla qué tan "seguro" es el router al elegir:
 :::warning
 Bajar demasiado la temperatura (< 0.05) puede hacer que el router sea rígido y elija mal en casos límite. Sube el `confidence_threshold` en su lugar si quieres más rigor.
 :::
+
+---
+
+## Ofuscación y Carga de Credenciales
+
+Para proteger contraseñas, tokens de API u otros datos sensibles y evitar almacenarlos en texto plano en el archivo `config.json`, l3mcore soporta la de-ofuscación automática al vuelo de campos con los siguientes formatos:
+
+### 1. Variables de Entorno (`env:`)
+Puedes indicar a l3mcore que lea una credencial desde las variables de entorno del sistema utilizando el prefijo `env:` seguido del nombre de la variable.
+
+**Ejemplo en `config.json`:**
+```json
+"erp_connector": {
+    "password": "env:ODOO_PASSWORD"
+}
+```
+
+### 2. Codificación Base64 (`base64:`)
+Si deseas almacenar un valor ofuscado directamente dentro del archivo, puedes codificar la credencial en Base64 y usar el prefijo `base64:`.
+
+**Ejemplo en `config.json`:**
+```json
+"erp_connector": {
+    "password": "base64:bGVtb2VfcGFzczE="
+}
+```
+
+:::note Desofuscación al Vuelo
+Los plugins y el servidor de l3mcore acceden automáticamente a estos valores descifrados/resueltos mediante el `ConfigManager` de forma transparente. El archivo físico `config.json` en disco mantiene los valores de-ofuscados/seguros.
+:::
+
