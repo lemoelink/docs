@@ -59,6 +59,7 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             'avanzado/tool-calendar-smart',
+            'avanzado/tool-paperless-search',
           ],
         },
         {
