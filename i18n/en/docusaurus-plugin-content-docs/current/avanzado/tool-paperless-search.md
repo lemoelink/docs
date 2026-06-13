@@ -1,5 +1,5 @@
 ---
-id: plugin-paperless-search
+id: tool-paperless-search
 title: Paperless-ngx Search Plugin
 sidebar_position: 6
 description: How to use the paperless_search plugin to connect your local document manager with l3mcore's expert models.
