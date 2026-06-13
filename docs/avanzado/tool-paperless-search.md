@@ -31,7 +31,7 @@ Añade la configuración en tu archivo `config/config.json`:
 }
 ```
 
-Opcionalmente, puedes utilizar variables de entorno para mayor seguridad:
+Opcionalmente, puedes utilizar variables de entorno o un archivo `.env` en la raíz del proyecto para mayor seguridad:
 - `PAPERLESS_API_URL`
 - `PAPERLESS_WEB_URL`
 - `PAPERLESS_API_TOKEN`
