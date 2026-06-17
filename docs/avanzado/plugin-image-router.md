@@ -58,9 +58,39 @@ Para que la imagen sea aceptada, el campo `url` debe cumplir una de estas condic
 | `file://`, `ftp://` u otros | Rechazada, no activa el enrutamiento |
 | Vacio o nulo | Rechazado, no activa el enrutamiento |
 
-:::info Limite de inspeccion
-Por rendimiento y seguridad, el plugin solo inspecciona los ultimos 10 mensajes del historial y los primeros 20 fragmentos de contenido por mensaje.
+:::info Límites de inspección
+Por rendimiento y seguridad, el plugin solo inspecciona los últimos 10 mensajes del historial y los primeros 20 fragmentos de contenido por mensaje. Estos valores son configurables.
 :::
+
+## Configuración avanzada
+
+El plugin soporta las siguientes opciones en `config/config.json`:
+
+```json
+{
+  "image_router": {
+    "expert_label": "image-expert",
+    "max_messages": 10,
+    "max_parts_per_msg": 20,
+    "max_url_len": 10000000,
+    "allow_external_urls": false,
+    "ssrf_protection": true,
+    "reject_oversized_b64": true,
+    "max_b64_bytes": 2097152
+  }
+}
+```
+
+| Parámetro | Tipo | Default | Descripción |
+|-----------|------|---------|-------------|
+| `expert_label` | string | `"image-expert"` | Label del experto de visión |
+| `max_messages` | int | `10` | Mensajes máximos a inspeccionar |
+| `max_parts_per_msg` | int | `20` | Fragmentos máximos por mensaje |
+| `max_url_len` | int | `10000000` | Longitud máxima de URLs |
+| `allow_external_urls` | bool | `false` | Permitir URLs externas (http/https) |
+| `ssrf_protection` | bool | `true` | Bloquear IPs privadas en URLs externas |
+| `reject_oversized_b64` | bool | `true` | Rechazar base64 que exceda el límite |
+| `max_b64_bytes` | int | `2097152` | Tamaño máximo de payload base64 (2MB) |
 
 ## Requisitos
 

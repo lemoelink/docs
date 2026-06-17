@@ -53,22 +53,32 @@ Copia el fichero `system_time.py` desde el repositorio oficial de plugins en la 
 
 * **Descarga directa:** [system_time.py](https://github.com/lemoelink/plugins/blob/main/system_time.py)
 
-### 3. Personalizar el formato (Opcional)
+### 3. Personalizar el formato y zona horaria (Opcional)
 
-Por defecto, el plugin utiliza el formato `"Day, Month Day, Year, HH:MM:SS"` (por ejemplo: `Tuesday, June 02, 2026, 16:22:32`).
+Por defecto, el plugin utiliza el formato `"Day, Month Day, Year, HH:MM:SS"` (por ejemplo: `Tuesday, June 02, 2026, 16:22:32`) con la zona horaria local del sistema.
 
-Puedes personalizar este formato utilizando la directiva estándar de formateo de tiempo de Python (`strftime`) en tu archivo `config/config.json`. Añade un objeto `"system_time"` con el parámetro `"format"`:
+Puedes personalizar el formato y la zona horaria en tu archivo `config/config.json`:
 
 ```json
 {
   "router": { ... },
   "system_time": {
-    "format": "%d/%m/%Y %H:%M:%S"
+    "format": "%d/%m/%Y %H:%M:%S",
+    "timezone": "Europe/Madrid"
   }
 }
 ```
 
-*En este ejemplo, la hora se inyectará como: `02/06/2026 16:22:32`.*
+| Parámetro | Tipo | Default | Descripción |
+|-----------|------|---------|-------------|
+| `format` | string | `"%A, %B %d, %Y, %H:%M:%S"` | Formato `strftime` de Python |
+| `timezone` | string | `""` (local) | Zona horaria IANA (ej. `"Europe/Madrid"`, `"America/Bogota"`) |
+
+:::info Requisito de timezone
+Para usar `timezone`, se requiere Python 3.9+ con `zoneinfo` o la librería `pytz` instalada.
+:::
+
+*En este ejemplo, la hora se inyectará como: `02/06/2026 16:22:32` en la zona horaria de Madrid.*
 
 ---
 

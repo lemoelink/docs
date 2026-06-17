@@ -89,6 +89,19 @@ Si el script no reconoce el `tool_name`, debe retornar `None` para permitir que 
 
 ---
 
+## Herramientas Incluidas
+
+| Tool | Descripcion |
+|---|---|
+| `calendar_smart` | Google Calendar: listar y crear eventos |
+| `paperless_search` | Busqueda semantica en Paperless-ngx |
+| `web_search` | Busqueda en internet via DuckDuckGo/SearXNG |
+| `code_exec` | Ejecucion de Python en sandbox seguro |
+| `memory_store` | Memoria persistente key-value entre sesiones |
+| `conversation_exporter` | Exportar conversaciones a Markdown/JSON/texto |
+
+---
+
 ## Limpieza de Salidas y Posprocesamiento
 
 l3mcore implementa mecanismos de limpieza automáticos para garantizar que las respuestas entregadas al usuario sean conversacionales y directas:

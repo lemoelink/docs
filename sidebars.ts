@@ -60,6 +60,10 @@ const sidebars: SidebarsConfig = {
           items: [
             'avanzado/tool-calendar-smart',
             'avanzado/tool-paperless-search',
+            'avanzado/tool-web-search',
+            'avanzado/tool-code-exec',
+            'avanzado/tool-memory-store',
+            'avanzado/tool-conversation-exporter',
           ],
         },
         {
@@ -75,6 +79,7 @@ const sidebars: SidebarsConfig = {
             'avanzado/plugin-user-profile',
             'avanzado/plugin-routing-transparency',
             'avanzado/plugin-pii-masker',
+            'avanzado/plugin-telemetry-dashboard',
           ],
         },
         'avanzado/route-endpoint',
@@ -88,6 +93,13 @@ const sidebars: SidebarsConfig = {
       items: [
         'soporte/troubleshooting',
         'soporte/faq',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Extras',
+      items: [
+        'extras/changelog',
       ],
     },
   ],

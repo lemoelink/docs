@@ -59,8 +59,38 @@ For the image to be accepted, the `url` field must meet one of these conditions:
 | Empty or null | Rejected, does not activate routing |
 
 :::info Inspection limit
-For performance and security, the plugin only inspects the last 10 messages in the history and the first 20 content parts per message.
+For performance and security, the plugin only inspects the last 10 messages in the history and the first 20 content parts per message. These values are configurable.
 :::
+
+## Advanced Configuration
+
+The plugin supports the following options in `config/config.json`:
+
+```json
+{
+  "image_router": {
+    "expert_label": "image-expert",
+    "max_messages": 10,
+    "max_parts_per_msg": 20,
+    "max_url_len": 10000000,
+    "allow_external_urls": false,
+    "ssrf_protection": true,
+    "reject_oversized_b64": true,
+    "max_b64_bytes": 2097152
+  }
+}
+```
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `expert_label` | string | `"image-expert"` | Label of the vision expert |
+| `max_messages` | int | `10` | Maximum messages to inspect |
+| `max_parts_per_msg` | int | `20` | Maximum content parts per message |
+| `max_url_len` | int | `10000000` | Maximum URL length |
+| `allow_external_urls` | bool | `false` | Allow external URLs (http/https) |
+| `ssrf_protection` | bool | `true` | Block private IPs in external URLs |
+| `reject_oversized_b64` | bool | `true` | Reject base64 exceeding the limit |
+| `max_b64_bytes` | int | `2097152` | Maximum base64 payload size (2MB) |
 
 ## Requirements
 

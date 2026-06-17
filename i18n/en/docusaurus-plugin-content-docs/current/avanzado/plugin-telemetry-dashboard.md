@@ -1,66 +1,132 @@
 ---
 id: plugin-telemetry-dashboard
 title: Telemetry and Dashboard Plugin
-sidebar_position: 8
-description: How to use the telemetry_dashboard plugin to monitor requests, tokens, average latencies, and estimated API costs in real time.
+sidebar_position: 6
+description: How to use the telemetry_dashboard plugin to monitor expert model usage in real time with an interactive web dashboard.
 ---
 
 # Telemetry and Dashboard Plugin
 
-The `telemetry_dashboard` plugin provides a real-time web interface to monitor the performance of l3mcore experts, including key metrics such as processed requests, estimated tokens consumed, average response latency, and accumulated cost (in USD) for API-based experts.
+The `telemetry_dashboard` plugin records per-expert usage metrics (requests, tokens, latency, costs, success/failure rates) and serves an interactive web dashboard with real-time charts.
 
-The dashboard runs its own Flask web server in the background, allowing independent access without interfering with inference traffic.
+## Problem it solves
 
----
+When running l3mcore with multiple experts, you need to know which one is used most, how much each external API call costs, and whether there are failures. Without visibility, it's hard to optimize expert configuration or detect performance issues.
 
-## Key Features
+## How it works
 
-1. **Real-time Dashboard**: Hourly requests chart and key metrics automatically updated via asynchronous `fetch` every 5 seconds (without full page reloads).
-2. **Latency Measurement**: Tracks the exact time each expert takes to respond using `time.monotonic()` in the Core.
-3. **Cost Tracking**: Estimates USD spend based on an internal price table (`_COST_PER_1M`) for API providers (GPT-4o, Claude, Gemini, etc.).
-4. **Persistence and Control**: Saves data in `logs/telemetry.json` and allows resetting metrics via a confirmation button in the UI.
+The plugin uses two mechanisms:
 
----
+1. **`after_generation` hook**: Records metrics after each expert response.
+2. **Flask server**: A daemon thread runs a web server on the configured port serving the dashboard.
 
-## How It Works
-
-The plugin leverages internal hooks and side-channel communication to capture accurate data:
-
-- **Latency Measurement**: When the Core (`ExpertDispatcher`) processes a request, it measures the physical latency of the backend and sends it to the plugin using `record_latency(label, latency_ms)`.
-- **after_generation Hook**: Consumes the pending latency associated with that inference, calculates estimated tokens (using a word_count * 1.3 approximation), resolves the cost if the expert is of type `api`, and increments the expert's counter in `logs/telemetry.json`.
-- **Independent Flask Server**: Starts a lightweight web server on port `11436`.
-
----
-
-## Installation and Configuration
-
-### 1. Enable the plugin
-Simply copy the `telemetry_dashboard.py` file into the `plugins/` directory of your l3mcore installation. The plugin will load automatically upon the next startup.
-
-You will see the following confirmation in the terminal:
-```bash
-[Plugin] Telemetry Dashboard → http://0.0.0.0:11436
+```
+API Request → ExpertDispatcher → Response
+                    ↓
+        hook_after_generation(response, label)
+                    ↓
+        record_telemetry(label, latency, tokens, success)
+                    ↓
+        logs/telemetry.json (persistence)
+                    ↓
+        Web dashboard (port 8081) ← Reads JSON
 ```
 
-### 2. Cost Parameters
-The plugin calculates costs only for experts defined with `"type": "api"`. It uses the internal output token price table. You can extend or modify these prices by updating the `_COST_PER_1M` variable inside the plugin file.
+## Configuration
 
----
+Add the `"telemetry_dashboard"` section in `config/config.json`:
 
-## Dashboard Interface (`http://localhost:11436`)
+```json
+{
+  "telemetry_dashboard": {
+    "port": 8081,
+    "host": "127.0.0.1",
+    "api_key": "",
+    "cost_per_1m": {}
+  }
+}
+```
 
-The web dashboard features a modern and minimalist design with support for:
-- **KPI Cards**: Total requests, total estimated tokens, active experts, and most-called expert.
-- **Bar Chart**: Hourly aggregated requests history over the last 24 hours.
-- **Detailed Table by Expert**:
-  - **Expert**: Name/label of the specialist model.
-  - **Requests**: Total number of calls routed to the expert.
-  - **Tokens**: Estimated generated tokens.
-  - **Average Latency**: Mean response time (formatted in `ms` or `s`).
-  - **Estimated Cost**: Total accumulated cost (API models only, formatted as `$X.XXXX`).
-  - **Usage Distribution**: Horizontal bar chart showing the relative usage percentage of the expert.
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `port` | int | `8081` | Dashboard server port |
+| `host` | string | `"127.0.0.1"` | Server bind address |
+| `api_key` | string | `""` | API key for authentication (empty = no auth) |
+| `cost_per_1m` | dict | `{}` | Custom pricing table per model |
 
----
+### Authentication
 
-## Resetting Statistics
-At the bottom of the interface, the dashboard includes a **Reset Data** button. Clicking and confirming in the popup modal will clear the history and generate a blank `telemetry.json` file without requiring a restart of the l3mcore server.
+If you configure `api_key`, all requests to the dashboard and metrics API must include the `X-API-Key` header:
+
+```bash
+curl -H "X-API-Key: your-secret-key" http://localhost:8081/api/data
+```
+
+### Custom pricing table
+
+By default, the plugin uses an internal pricing table for known models (GPT-4o, Claude, Gemini, etc.). You can override it or add your own models:
+
+```json
+{
+  "telemetry_dashboard": {
+    "cost_per_1m": {
+      "gpt-4o": [5.0, 15.0],
+      "my-local-model": [0.0, 0.0],
+      "my-api-model": [2.0, 8.0]
+    }
+  }
+}
+```
+
+Values are `[input_cost_per_1M, output_cost_per_1M]` in USD.
+
+## Dashboard Interface (`http://localhost:8081`)
+
+### KPI Cards
+- **Total Cost**: Estimated total cost of API calls.
+- **Total Tokens**: Total tokens processed.
+- **Success Rate**: Percentage of successful requests.
+
+### Expert Table (7 columns)
+
+| Column | Description |
+|--------|-------------|
+| Expert Router | Expert label |
+| Reqs | Processed requests |
+| Tokens (In/Out) | Input and output tokens |
+| Throughput | Tokens per second |
+| Avg Latency | Average latency in ms |
+| Cost | Estimated cost (API only) |
+| Health | Success rate |
+
+### Charts
+- **Timeline**: Request evolution over time (Chart.js bar).
+- **Cost Distribution**: Cost distribution by expert (doughnut).
+
+## Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/` | Dashboard interface (HTML) |
+| GET | `/api/data` | Metrics in JSON format |
+| GET | `/api/export` | Export metrics as CSV |
+
+## Behavior
+
+| Scenario | Result |
+|----------|--------|
+| Normal request | Records requests, tokens, latency, cost |
+| Expert failure | Records failure, updates health |
+| API experts | Calculates cost from pricing table |
+| Local/Ollama experts | Cost shown as `-` |
+| Server startup | Starts dashboard daemon thread |
+
+## Verification
+
+When starting l3mcore, the log should show:
+
+```
+INFO - Enterprise Telemetry dashboard running on http://127.0.0.1:8081
+```
+
+Open `http://localhost:8081` in your browser to view the dashboard.
