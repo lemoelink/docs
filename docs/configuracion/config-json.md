@@ -117,8 +117,8 @@ Puedes indicar a l3mcore que lea una credencial desde las variables de entorno d
 
 **Ejemplo en `config.json`:**
 ```json
-"erp_connector": {
-    "password": "env:ODOO_PASSWORD"
+"database": {
+    "password": "env:DB_PASSWORD"
 }
 ```
 
@@ -127,12 +127,12 @@ Si deseas almacenar un valor ofuscado directamente dentro del archivo, puedes co
 
 **Ejemplo en `config.json`:**
 ```json
-"erp_connector": {
+"database": {
     "password": "base64:bGVtb2VfcGFzczE="
 }
 ```
 
 :::note Desofuscación al Vuelo
-Los plugins y el servidor de l3mcore acceden automáticamente a estos valores descifrados/resueltos mediante el `ConfigManager` de forma transparente. El archivo físico `config.json` en disco mantiene los valores de-ofuscados/seguros.
+El servidor de l3mcore accede automáticamente a estos valores descifrados/resueltos mediante el `ConfigManager` de forma transparente. El archivo físico `config.json` en disco mantiene los valores de-ofuscados/seguros.
 :::
 

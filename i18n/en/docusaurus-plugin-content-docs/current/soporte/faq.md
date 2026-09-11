@@ -55,7 +55,7 @@ Yes. Use the Langchain/LlamaIndex OpenAI client pointing to `http://your-ip:1143
 With `paraphrase-multilingual-MiniLM-L12-v2`: ~10-20ms. With keywords only: < 1ms. The expert model's inference time dominates the total time.
 
 ### What happens if an external backend (OpenAI) fails?
-The Expert Dispatcher returns an HTTP 502/503 error to the client. There are no automatic retries currently. You can implement retry logic in an `after_generation` plugin.
+The Expert Dispatcher returns an HTTP 502/503 error to the client. There are no automatic retries currently.
 
 ---
 
@@ -65,4 +65,4 @@ The Expert Dispatcher returns an HTTP 502/503 error to the client. There are no 
 Not directly. Put it behind a reverse proxy (Nginx/Caddy) with authentication. l3mcore is designed for internal networks and homelabs.
 
 ### Does l3mcore filter content?
-Not by default. You can implement content filters using the [plugin](/avanzado/plugins) system.
+Not by default. It acts as a transparent router.

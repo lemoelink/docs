@@ -80,21 +80,7 @@ The router's decision time varies depending on the embedding model:
 
 The model is loaded into RAM only once at startup. The decision time is marginal compared to the expert model's inference.
 
-## Embedding cache
 
-For repetitive prompts (e.g. a bot with a few frequent questions), you can implement caching in a plugin:
-
-```python
-# plugins/embedding_cache.py
-from functools import lru_cache
-
-@lru_cache(maxsize=512)
-def cached_route(prompt: str) -> str:
-    return prompt  # the hook only caches if the prompt is identical
-
-def before_routing(prompt: str) -> str:
-    return cached_route(prompt.strip().lower())
-```
 
 ## Monitoring
 

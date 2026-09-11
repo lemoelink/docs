@@ -24,7 +24,6 @@ curl -sSL https://raw.githubusercontent.com/lemoelink/l3mcore/refs/heads/master/
 The interactive script will ask you:
 - If you want to automatically install Ollama
 - If you want to enable the semantic router (recommended)
-- If you want to enable the plugin system and download the generic fallback model
 
 ## Classic clone method
 
@@ -68,7 +67,6 @@ lemoe/
 │   ├── config.json        # Router configuration
 │   └── experts.json       # Expert definitions
 ├── modules/               # Internal modules
-├── plugins/               # Your custom plugins
 ├── logs/                  # Application logs
 ├── models/                # Local ONNX/GGUF models
 ├── api_server.py          # Main HTTP server

@@ -92,7 +92,6 @@ La auto-correccion cubre todas las fases del enrutamiento:
 
 | Fase | Descripcion |
 |---|---|
-| Plugin forzado | Si un plugin fuerza una ruta y el experto falla |
 | Experto explicito | Si el usuario selecciona un modelo concreto y este falla |
 | Router semantico | Si el router elige un experto y este falla |
 | Fallback | Si el propio fallback falla, se devuelve un mensaje de error generico |

@@ -92,7 +92,6 @@ Auto-correction covers all routing phases:
 
 | Phase | Description |
 |---|---|
-| Forced plugin | If a plugin forces a route and the expert fails |
 | Explicit expert | If the user selects a specific model and it fails |
 | Semantic router | If the router chooses an expert and it fails |
 | Fallback | If the fallback itself fails, a generic error message is returned |

@@ -24,7 +24,6 @@ curl -sSL https://raw.githubusercontent.com/lemoelink/l3mcore/refs/heads/master/
 El script interactivo te preguntará:
 - Si quieres instalar Ollama automáticamente
 - Si quieres habilitar el enrutador semántico (recomendado)
-- Si quieres habilitar el sistema de plugins y descargar el modelo genérico de fallback
 
 ## Método de clonado clásico
 
@@ -68,7 +67,6 @@ l3mcore/
 │   ├── config.json        # Configuración del router
 │   └── experts.json       # Definición de expertos
 ├── modules/               # Módulos internos
-├── plugins/               # Tus plugins personalizados
 ├── logs/                  # Logs de la aplicación
 ├── models/                # Modelos locales ONNX/GGUF
 ├── api_server.py          # Servidor HTTP principal

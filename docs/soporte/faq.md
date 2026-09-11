@@ -10,7 +10,7 @@ description: Preguntas frecuentes sobre l3mcore.
 ## General
 
 ### ¿l3mcore es gratuito?
-Sí, l3mcore es open source y gratuito para uso no comercial. Los costes vienen de los backends que configures (ej. API de OpenAI) o del hardware para modelos locales.
+Sí, l3mcore es 100% open source y gratuito. Los costes vienen de los backends que configures (ej. API de OpenAI) o del hardware para modelos locales.
 
 ### ¿Necesito GPU para usar l3mcore?
 No. El router ML de l3mcore corre en CPU. Los backends que uses (Ollama, vLLM) pueden o no necesitar GPU según los modelos que elijas.
@@ -55,7 +55,7 @@ Sí. Usa el cliente OpenAI de Langchain/LlamaIndex apuntando a `http://tu-ip:114
 Con `paraphrase-multilingual-MiniLM-L12-v2`: ~10-20ms. Con solo keywords: < 1ms. El tiempo de inferencia del modelo experto domina el tiempo total.
 
 ### ¿Qué pasa si un backend externo (OpenAI) falla?
-El Expert Dispatcher devuelve un error HTTP 502/503 al cliente. No hay reintentos automáticos actualmente. Puedes implementar retry logic en un plugin `after_generation`.
+El Expert Dispatcher devuelve un error HTTP 502/503 al cliente. No hay reintentos automáticos actualmente.
 
 ---
 
@@ -65,4 +65,4 @@ El Expert Dispatcher devuelve un error HTTP 502/503 al cliente. No hay reintento
 No directamente. Ponlo detrás de un proxy reverso (Nginx/Caddy) con autenticación. l3mcore está diseñado para redes internas y homelabs.
 
 ### ¿l3mcore filtra contenido?
-No por defecto. Puedes implementar filtros de contenido usando el sistema de [plugins](/avanzado/plugins).
+No por defecto.
