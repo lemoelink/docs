@@ -80,6 +80,22 @@ El sistema de puntuación multi-vector necesita suficiente cobertura. Aunque se 
 }
 ```
 
+## Ejemplo: Servidor local vLLM / OpenAI-compatible
+
+l3mcore se integra de forma nativa con **vLLM**, LocalAI o cualquier servidor que implemente la API de OpenAI. Solo necesitas especificar `api_base`:
+
+```json
+{
+  "id": 3,
+  "label": "experto_vllm",
+  "description": "Modelo de alto rendimiento servido por vLLM local o remoto.",
+  "keywords": ["analisis", "investigacion", "resumen", "razonamiento", "logica"],
+  "type": "api",
+  "api_base": "http://localhost:8000/v1",
+  "model_name": "meta-llama/Meta-Llama-3-8B-Instruct"
+}
+```
+
 ## Límite de expertos (`max_experts`)
 
 Define el número máximo de expertos que puede cargar el sistema. Aumentarlo no tiene coste en CPU/RAM a menos que uses backends locales (ONNX/GGUF).

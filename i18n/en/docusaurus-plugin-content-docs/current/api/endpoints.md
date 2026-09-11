@@ -69,11 +69,30 @@ Lists all available experts in OpenAI format.
 {
   "object": "list",
   "data": [
-    {"id": "programmer", "object": "model", "created": 1700000000, "owned_by": "lemoe"},
-    {"id": "creative_writer", "object": "model", "created": 1700000000, "owned_by": "lemoe"}
+    {"id": "programmer", "object": "model", "created": 1700000000, "owned_by": "l3mcore"},
+    {"id": "creative_writer", "object": "model", "created": 1700000000, "owned_by": "l3mcore"}
   ]
 }
 ```
+
+---
+
+### `GET /v1/models/{model_id}`
+
+Retrieves details for a specific model according to the OpenAI API specification.
+
+**Response:**
+
+```json
+{
+  "id": "programmer",
+  "object": "model",
+  "created": 1700000000,
+  "owned_by": "l3mcore"
+}
+```
+
+Returns HTTP 404 (`model_not_found`) if the model does not exist.
 
 ---
 

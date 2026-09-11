@@ -80,6 +80,22 @@ The multi-vector scoring system needs enough coverage. While defining descriptiv
 }
 ```
 
+## Example: Local vLLM / OpenAI-compatible Server
+
+l3mcore natively connects with **vLLM**, LocalAI, or any server implementing the OpenAI API format. Simply specify `api_base`:
+
+```json
+{
+  "id": 3,
+  "label": "vllm_expert",
+  "description": "High-throughput model served by local or remote vLLM.",
+  "keywords": ["analysis", "research", "summary", "reasoning", "logic"],
+  "type": "api",
+  "api_base": "http://localhost:8000/v1",
+  "model_name": "meta-llama/Meta-Llama-3-8B-Instruct"
+}
+```
+
 ## Expert Limit (`max_experts`)
 
 Defines the maximum number of experts the system can load. Increasing it has no CPU/RAM cost unless you use local backends (ONNX/GGUF).

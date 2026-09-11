@@ -69,11 +69,30 @@ Lista todos los expertos disponibles en formato OpenAI.
 {
   "object": "list",
   "data": [
-    {"id": "programador", "object": "model", "created": 1700000000, "owned_by": "lemoe"},
-    {"id": "escritor_creativo", "object": "model", "created": 1700000000, "owned_by": "lemoe"}
+    {"id": "programador", "object": "model", "created": 1700000000, "owned_by": "l3mcore"},
+    {"id": "escritor_creativo", "object": "model", "created": 1700000000, "owned_by": "l3mcore"}
   ]
 }
 ```
+
+---
+
+### `GET /v1/models/{model_id}`
+
+Obtiene la información de un modelo o experto específico según la especificación estándar de OpenAI.
+
+**Response:**
+
+```json
+{
+  "id": "programador",
+  "object": "model",
+  "created": 1700000000,
+  "owned_by": "l3mcore"
+}
+```
+
+Si el modelo no existe, devuelve un error 404 (`model_not_found`).
 
 ---
 
